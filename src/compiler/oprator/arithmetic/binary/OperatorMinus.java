@@ -22,7 +22,7 @@ public class OperatorMinus extends ArithmeticBinaryOperator {
 
 	public String getOpCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("#soustraction \n ");
+		sb.append("#soustraction \n");
 		sb.append("sub $v0, $t8, $v0\n");
 		return sb.toString();
 	}

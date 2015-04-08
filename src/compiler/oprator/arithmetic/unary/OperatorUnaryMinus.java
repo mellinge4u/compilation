@@ -20,7 +20,7 @@ public class OperatorUnaryMinus extends ArithmeticUnaryOperator {
 	@Override
 	public String getCompiledCode() {
 		// TODO Auto-generated method stub
-		return null;
+		return exp.getCompiledCode();
 	}
 
 }

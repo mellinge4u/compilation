@@ -22,6 +22,6 @@ public class OperatorSuperior extends LogicalBinaryOperator {
 	@Override
 	public String getCompiledCode() {
 		// TODO Auto-generated method stub
-		return null;
+		return expLeft.getCompiledCode() + expRight.getCompiledCode();
 	}
 }

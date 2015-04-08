@@ -21,7 +21,7 @@ public class OperatorMulti extends ArithmeticBinaryOperator {
 
 	public String getOpCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("#multiplication \n ");
+		sb.append("#multiplication \n");
 		sb.append("mul $v0, $t8, $v0\n");
 		return sb.toString();
 	}

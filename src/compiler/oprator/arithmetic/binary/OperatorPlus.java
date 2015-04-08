@@ -22,7 +22,7 @@ public class OperatorPlus extends ArithmeticBinaryOperator {
 
 	public String getOpCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("#addition \n ");
+		sb.append("#addition \n");
 		sb.append("add $v0, $t8, $v0\n");
 		return sb.toString();
 	}
