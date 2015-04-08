@@ -16,10 +16,17 @@ public class Constante extends Expression {
 		this.cst = cst;
 	}
 
-	@Override
+	@Override 
 	public String getDecoretedCode() {
 		// TODO ecrire le bon code
 		return "" + cst;
 	}
 
+	public String genererCode(){
+		StringBuilder sb = new StringBuilder();
+		//sb.append("/*Code cible qui évalue la constant et la stocke dans $v0 */");
+		sb.append("li $v0, "+cst+"\n");
+		return sb.toString();
+	}
+	
 }

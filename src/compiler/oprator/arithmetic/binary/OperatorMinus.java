@@ -21,4 +21,13 @@ public class OperatorMinus extends ArithmeticBinaryOperator {
 		return sb.toString();
 	}
 
+	public String genererCode(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.get.genererCode());
+		sb.append("#Code cible qui évalue l'expression gauche et la stocke dans $v0 ");
+		sb.append("sw $v0, (sp)\n");
+		sb.append("addi $sp, $sp-4\n");
+		return sb.toString();
+	}
+	
 }
