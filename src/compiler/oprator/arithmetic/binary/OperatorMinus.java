@@ -10,20 +10,19 @@ public class OperatorMinus extends ArithmeticBinaryOperator {
 	}
 
 	@Override
-	public String getDecoretedCode() {
-		// TODO ecrire le bon code
+	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
-		sb.append(expLeft.getDecoretedCode());
+		sb.append(expLeft.getSourceCode());
 		sb.append(" - ");
-		sb.append(expRight.getDecoretedCode());
+		sb.append(expRight.getSourceCode());
 		sb.append(")");
 		return sb.toString();
 	}
 
-	public String genererCode(){
+	public String getCompiledCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.get.genererCode());
+		sb.append(this.getCompiledCode());
 		sb.append("#Code cible qui évalue l'expression gauche et la stocke dans $v0 ");
 		sb.append("sw $v0, (sp)\n");
 		sb.append("addi $sp, $sp-4\n");

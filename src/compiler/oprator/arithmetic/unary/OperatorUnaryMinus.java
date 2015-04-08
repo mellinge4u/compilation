@@ -10,12 +10,17 @@ public class OperatorUnaryMinus extends ArithmeticUnaryOperator {
 	}
 
 	@Override
-	public String getDecoretedCode() {
-		// TODO ecrire le bon code
+	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("-");
-		sb.append(exp.getDecoretedCode());
+		sb.append(exp.getSourceCode());
 		return sb.toString();
+	}
+
+	@Override
+	public String getCompiledCode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

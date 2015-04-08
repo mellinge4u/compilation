@@ -23,7 +23,7 @@ public class SourceCode {
 	}
 	
 	public void printBuilt() {
-		System.out.println(buildCode.getDecoretedCode());
+		System.out.println(buildCode.getSourceCode());
 	}
 
 	public static void main(String[] args) {

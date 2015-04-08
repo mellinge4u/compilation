@@ -6,6 +6,6 @@ public abstract class AbstractTree {
 		
 	}
 
-	public abstract String getDecoretedCode();
+	public abstract String getSourceCode();
 	
 }

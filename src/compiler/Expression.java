@@ -6,6 +6,8 @@ public abstract class Expression extends AbstractTree {
 		
 	}
 
-	public abstract String getDecoretedCode();
+	public abstract String getSourceCode();
+
+	public abstract String getCompiledCode();
 
 }

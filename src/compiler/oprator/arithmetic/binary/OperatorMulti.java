@@ -9,16 +9,20 @@ public class OperatorMulti extends ArithmeticBinaryOperator {
 		super(expL, expR);
 	}
 
-	@Override
-	public String getDecoretedCode() {
-		// TODO ecrire le bon code
+	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
-		sb.append(expLeft.getDecoretedCode());
+		sb.append(expLeft.getSourceCode());
 		sb.append(" * ");
-		sb.append(expRight.getDecoretedCode());
+		sb.append(expRight.getSourceCode());
 		sb.append(")");
 		return sb.toString();
+	}
+
+	@Override
+	public String getCompiledCode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
