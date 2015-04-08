@@ -20,10 +20,11 @@ public class OperatorPlus extends ArithmeticBinaryOperator {
 		return sb.toString();
 	}
 
-	@Override
-	public String getCompiledCode() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getOpCode(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("#addition \n ");
+		sb.append("add $v0, $t8, $v0\n");
+		return sb.toString();
 	}
 
 }

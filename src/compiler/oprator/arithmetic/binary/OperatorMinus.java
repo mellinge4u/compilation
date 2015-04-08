@@ -20,12 +20,10 @@ public class OperatorMinus extends ArithmeticBinaryOperator {
 		return sb.toString();
 	}
 
-	public String getCompiledCode(){
+	public String getOpCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.getCompiledCode());
-		sb.append("#Code cible qui évalue l'expression gauche et la stocke dans $v0 ");
-		sb.append("sw $v0, (sp)\n");
-		sb.append("addi $sp, $sp-4\n");
+		sb.append("#soustraction \n ");
+		sb.append("sub $v0, $t8, $v0\n");
 		return sb.toString();
 	}
 	
