@@ -17,10 +17,13 @@ public class OperatorUnaryMinus extends ArithmeticUnaryOperator {
 		return sb.toString();
 	}
 
+
 	@Override
-	public String getCompiledCode() {
-		// TODO Auto-generated method stub
-		return exp.getCompiledCode();
+	public String getOpCode() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("#creation de -"+exp.getSourceCode()+" \n");
+		sb.append("sub $v0, 0, $v0\n");
+		return sb.toString();
 	}
 
 }

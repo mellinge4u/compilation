@@ -19,9 +19,15 @@ public class OperatorDiff extends LogicalBinaryOperator {
 		return sb.toString();
 	}
 
-	@Override
-	public String getCompiledCode() {
-		// TODO Auto-generated method stub
-		return expLeft.getCompiledCode() + expRight.getCompiledCode();
+	public String getOpCode(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("#différent de \n");
+		sb.append("beq $v0, $t8, iftrue\n");//TODO incrementer le else 
+		sb.append("li $v0, 1\n");
+		sb.append("j fin\n");//TODO incrementer le fin
+		sb.append("iftrue :\n");
+		sb.append("li $v0, 0\n");
+		sb.append("fin :\n");//TODO incrementer le fin
+		return sb.toString();
 	}
 }
