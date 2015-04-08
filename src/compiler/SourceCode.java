@@ -22,13 +22,18 @@ public class SourceCode {
 		System.out.println(code);
 	}
 	
-	public void printBuilt() {
+	public void printSourceTree() {
 		System.out.println(buildCode.getSourceCode());
+	}
+	
+	public void printBuilt() {
+		System.out.println(buildCode.getCompiledCode());
 	}
 
 	public static void main(String[] args) {
 		SourceCode sc = new SourceCode();
 		sc.printSource();
+		sc.printSourceTree();
 		sc.printBuilt();
 	}
 }
