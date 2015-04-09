@@ -1,6 +1,8 @@
 package analyse ;
 import java_cup.runtime.*;
 
+import compilateutPlic.src.compiler.*;
+
 action code {: /* vide pour le moment */
 	    :} ;
    
@@ -56,27 +58,67 @@ parser code {:
    case a String value, are listed on the next line down. */
 
 terminal Symbol    POINTVIRGULE ;
-terminal String    TYPEPRIMITIF, IDF ;
-   
+terminal String    NOMBRE;
+terminal Symbol    OPPLUS,OPMOINS,OPMULT,OPDIFF,OPEGAL,OPSUP,OPINF,PARO,PARF;
 /* Non terminals used in the grammar section.  
    Non terminals that have an object value are listed first and then non terminals that have an 
    integer value are listed.  An object value means that it can be any type, it isn't set to a 
    specific type.  So it could be an Integer or a String or whatever. */
 
-non terminal String	PROG, LDECL, DECL ;
+non terminal AbstractTree	PROG, INST, EXP ;
 
 /* ----------------------------Grammar Section-------------------- */
 
 start with PROG ;
 
-PROG	::=	LDECL 
+PROG	::=	INST PROG
 		{: System.out.println("fini !") ; :}
 		;
+		| ^;
 
-LDECL	::=	LDECL DECL
-	|	DECL
-		;
+INST	::=	EXP POINTVIRGULE;
 
-DECL	::=	TYPEPRIMITIF:t IDF:i POINTVIRGULE
+EXP		::= PARO EXP:e1 PARF;
+		{:
+			RESULT = e1;
+		:}
+		| EXP:e1 OPPLUS EXP:e2;
+		{:
+			RESULT = new OperatorPlus(e1,e2);
+		:}
+		| EXP:e1 OPMOINS EXP:e2;
+		{:
+			RESULT = new OperatorMoins(e1,e2);
+		:}
+		| EXP:e1 OPMULT EXP:e2;
+		{:
+			RESULT = new OperatorMult(e1,e2);
+		:}
+		| EXP:e1 OPEGAL EXP:e2;
+		{:
+			RESULT = new OperatorEqual(e1,e2);
+		:}
+		| OPMOINS EXP:e;
+		{:
+			RESULT = new OperatorUnaryMinus(e);
+		:}
+		| EXP:e1 OPDIFF EXP:e2;
+		{:
+			RESULT = new OperatorDiff(e1,e2);
+		:}
+		| EXP:e1 OPSUP EXP:e2;
+		{:
+			RESULT = new OperatorSup(e1,e2);
+		:}
+		| EXP:e1 OPINF EXP:e2;
+		{:
+			RESULT = new OperatorInf(e1,e2);
+		:}
+		| NOMBRE:n;
+		{:
+			RESULT = new Constante(n);
+		:}
+
+/*DECL	::=	TYPEPRIMITIF:t IDF:i POINTVIRGULE
 		{: System.out.println(i + " de type primitif " + t) ; :}
-		;
+		;*/

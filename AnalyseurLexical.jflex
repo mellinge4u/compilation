@@ -31,7 +31,7 @@ chiffre = [0-9]
 nombre = {chiffre}+
 opPlus = \+
 opMoins = -
-opFois = \*
+opMult = \*
 opDiff = !=
 opEgal = ==
 opSup = \>
@@ -42,17 +42,16 @@ parF = \)
 
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
 
-"chiffre"  { return symbol(CodesLexicaux.chiffre);}
-"nombre"  { return symbol(CodesLexicaux.nombre);}
-"opPlus"  { return symbol(CodesLexicaux.opPlus);}
-"opMoins"  { return symbol(CodesLexicaux.opMoins);}
-"opFois"  { return symbol(CodesLexicaux.opFois);}
-"opDiff"  { return symbol(CodesLexicaux.opDiff);}
-"opEgal"  { return symbol(CodesLexicaux.opEgal);}
-"opSup"  { return symbol(CodesLexicaux.opSup);}
-"opInf"  { return symbol(CodesLexicaux.opInf);}
-"parO"  { return symbol(CodesLexicaux.parO);}
-"parF"  { return symbol(CodesLexicaux.parF);}
+"nombre"  { return symbol(CodesLexicaux.NOMBRE, yytext());}
+"opPlus"  { return symbol(CodesLexicaux.OPPLUS);}
+"opMoins"  { return symbol(CodesLexicaux.OPMOINS);}
+"opMult"  { return symbol(CodesLexicaux.OPMULT);}
+"opDiff"  { return symbol(CodesLexicaux.OPDIFF);}
+"opEgal"  { return symbol(CodesLexicaux.OPEGAL);}
+"opSup"  { return symbol(CodesLexicaux.OPSUP);}
+"opInf"  { return symbol(CodesLexicaux.OPINF);}
+"parO"  { return symbol(CodesLexicaux.PARO);}
+"parF"  { return symbol(CodesLexicaux.PARF);}
 
 
 .                       {}
