@@ -27,16 +27,33 @@ import java_cup.runtime.*;
   }
 %}
 
-idf = <-- à compléter
-typePrimitif = <-- à compléter
-
+chiffre = [0-9]
+nombre = {chiffre}+
+opPlus = \+
+opMoins = -
+opFois = \*
+opDiff = !=
+opEgal = ==
+opSup = \>
+opInf = \<
+parO = \(
+parF = \)
 %%
 
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
 
-{typePrimitif}		{ return symbol(CodesLexicaux.TYPEPRIMITIF, yytext()); }
+"chiffre"  { return symbol(CodesLexicaux.chiffre);}
+"nombre"  { return symbol(CodesLexicaux.nombre);}
+"opPlus"  { return symbol(CodesLexicaux.opPlus);}
+"opMoins"  { return symbol(CodesLexicaux.opMoins);}
+"opFois"  { return symbol(CodesLexicaux.opFois);}
+"opDiff"  { return symbol(CodesLexicaux.opDiff);}
+"opEgal"  { return symbol(CodesLexicaux.opEgal);}
+"opSup"  { return symbol(CodesLexicaux.opSup);}
+"opInf"  { return symbol(CodesLexicaux.opInf);}
+"parO"  { return symbol(CodesLexicaux.parO);}
+"parF"  { return symbol(CodesLexicaux.parF);}
 
-{idf}			{ return symbol(CodesLexicaux.IDF, yytext()) ; }
 
 .                       {}
 \n                      {}
