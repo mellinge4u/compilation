@@ -74,7 +74,7 @@ start with PROG ;
 PROG	::=	INST PROG
 		{: System.out.println("fini !") ; :}
 		;
-		| ^;
+		| INST;
 
 INST	::=	EXP POINTVIRGULE;
 
