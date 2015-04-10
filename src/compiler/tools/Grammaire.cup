@@ -115,15 +115,15 @@ EXP		::= PARO EXP:e1 PARF
 		:}
 		| EXP:e1 OPMOINS EXP:e2
 		{:
-			RESULT = new OperatorMoins(e1,e2);
+			RESULT = new OperatorMinus(e1,e2);
 		:}
 		| EXP:e1 OPMULT EXP:e2
 		{:
-			RESULT = new OperatorMult(e1,e2);
+			RESULT = new OperatorMulti(e1,e2);
 		:}
 		| EXP:e1 OPEGAL EXP:e2
 		{:
-			RESULT = new OperatorEqual(e1,e2);
+			RESULT = new OperatorEquals(e1,e2);
 		:}
 		| OPMOINS EXP:e
 		{:
@@ -135,11 +135,11 @@ EXP		::= PARO EXP:e1 PARF
 		:}
 		| EXP:e1 OPSUP EXP:e2
 		{:
-			RESULT = new OperatorSup(e1,e2);
+			RESULT = new OperatorSuperior(e1,e2);
 		:}
 		| EXP:e1 OPINF EXP:e2
 		{:
-			RESULT = new OperatorInf(e1,e2);
+			RESULT = new OperatorInferior(e1,e2);
 		:}
 		| NOMBRE:n
 		{:
