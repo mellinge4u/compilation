@@ -73,51 +73,51 @@ start with PROG ;
 
 PROG	::=	INST PROG
 		{: System.out.println("fini !") ; :}
-		;
+		
 		| INST;
 
 INST	::=	EXP POINTVIRGULE;
 
-EXP		::= PARO EXP:e1 PARF;
+EXP		::= PARO EXP:e1 PARF
 		{:
 			RESULT = e1;
 		:}
-		| EXP:e1 OPPLUS EXP:e2;
+		| EXP:e1 OPPLUS EXP:e2
 		{:
 			RESULT = new OperatorPlus(e1,e2);
 		:}
-		| EXP:e1 OPMOINS EXP:e2;
+		| EXP:e1 OPMOINS EXP:e2
 		{:
 			RESULT = new OperatorMoins(e1,e2);
 		:}
-		| EXP:e1 OPMULT EXP:e2;
+		| EXP:e1 OPMULT EXP:e2
 		{:
 			RESULT = new OperatorMult(e1,e2);
 		:}
-		| EXP:e1 OPEGAL EXP:e2;
+		| EXP:e1 OPEGAL EXP:e2
 		{:
 			RESULT = new OperatorEqual(e1,e2);
 		:}
-		| OPMOINS EXP:e;
+		| OPMOINS EXP:e
 		{:
 			RESULT = new OperatorUnaryMinus(e);
 		:}
-		| EXP:e1 OPDIFF EXP:e2;
+		| EXP:e1 OPDIFF EXP:e2
 		{:
 			RESULT = new OperatorDiff(e1,e2);
 		:}
-		| EXP:e1 OPSUP EXP:e2;
+		| EXP:e1 OPSUP EXP:e2
 		{:
 			RESULT = new OperatorSup(e1,e2);
 		:}
-		| EXP:e1 OPINF EXP:e2;
+		| EXP:e1 OPINF EXP:e2
 		{:
 			RESULT = new OperatorInf(e1,e2);
 		:}
-		| NOMBRE:n;
+		| NOMBRE:n
 		{:
 			RESULT = new Constante(n);
-		:}
+		:};
 
 /*DECL	::=	TYPEPRIMITIF:t IDF:i POINTVIRGULE
 		{: System.out.println(i + " de type primitif " + t) ; :}
