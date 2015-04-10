@@ -4,7 +4,7 @@
 // Fri Apr 10 14:42:36 CEST 2015
 //----------------------------------------------------
 
-package analyse;
+package compiler.tools;
 
 /** CUP generated class containing symbol constants. */
 public class CodeLexicaux {

@@ -1,7 +1,17 @@
-package analyse ;
-import java_cup.runtime.*;
+package compiler.tools;
 
-import compilateutPlic.src.compiler.*;
+import java_cup.runtime.*;
+import compiler.AbstractTree;
+import compiler.Constante;
+import compiler.Expression;
+import compiler.oprator.arithmetic.binary.OperatorMinus;
+import compiler.oprator.arithmetic.binary.OperatorMulti;
+import compiler.oprator.arithmetic.binary.OperatorPlus;
+import compiler.oprator.arithmetic.unary.OperatorUnaryMinus;
+import compiler.oprator.logical.binary.OperatorDiff;
+import compiler.oprator.logical.binary.OperatorEquals;
+import compiler.oprator.logical.binary.OperatorInferior;
+import compiler.oprator.logical.binary.OperatorSuperior;
 
 action code {: /* vide pour le moment */
 	    :} ;
@@ -135,7 +145,3 @@ EXP		::= PARO EXP:e1 PARF
 		{:
 			RESULT = new Constante(n);
 		:};
-
-/*DECL	::=	TYPEPRIMITIF:t IDF:i POINTVIRGULE
-		{: System.out.println(i + " de type primitif " + t) ; :}
-		;*/

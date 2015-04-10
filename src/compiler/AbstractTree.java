@@ -7,5 +7,7 @@ public abstract class AbstractTree {
 	}
 
 	public abstract String getSourceCode();
+
+	public abstract String getCompiledCode();
 	
 }

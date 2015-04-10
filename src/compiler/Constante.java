@@ -4,8 +4,8 @@ public class Constante extends Expression {
 
 	protected int cst;
 	
-	public Constante(int value) {
-		cst = value;
+	public Constante(String value) {
+		cst = Integer.parseInt(value);
 	}
 
 	public int getCst() {

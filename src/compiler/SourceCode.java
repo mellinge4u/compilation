@@ -12,9 +12,9 @@ public class SourceCode {
 	
 	public SourceCode() {
 		code = "7+3-5 < -12";
-		Expression add = new OperatorPlus(new Constante(7), new Constante(3));
-		Expression sous = new OperatorMinus(add, new Constante(5));
-		Expression mDouze = new OperatorUnaryMinus(new Constante(12));
+		Expression add = new OperatorPlus(new Constante("7"), new Constante("3"));
+		Expression sous = new OperatorMinus(add, new Constante("5"));
+		Expression mDouze = new OperatorUnaryMinus(new Constante("12"));
 		buildCode = new OperatorInferior(sous, mDouze);
 	}
 
