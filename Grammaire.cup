@@ -74,19 +74,27 @@ terminal Symbol    PARF;
    integer value are listed.  An object value means that it can be any type, it isn't set to a 
    specific type.  So it could be an Integer or a String or whatever. */
 
-non terminal AbstractTree	PROG, INST, EXP ;
+non terminal AbstractTree	 INST ;
+non terminal Expression EXP;
 
+precedence left OPDIFF, OPEGAL, OPINF, OPSUP;
+
+precedence left OPPLUS , OPMOINS;
+precedence left OPMULT ;
 /* ----------------------------Grammar Section-------------------- */
 
-start with PROG ;
+start with INST ;
 
-PROG	::=	PROG INST
+/*PROG	::=	PROG INST
 		{: System.out.println("fini !") ; :}
 		
-		| INST;
+		| INST;*/
 
-INST	::=	EXP POINTVIRGULE;
-
+INST	::=	EXP:e POINTVIRGULE
+			{:
+				RESULT = e;
+			:};
+			
 EXP		::= PARO EXP:e1 PARF
 		{:
 			RESULT = e1;
