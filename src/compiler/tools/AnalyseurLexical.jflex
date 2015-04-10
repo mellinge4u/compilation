@@ -42,16 +42,16 @@ parF = \)
 
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
 
-"nombre"  { return symbol(CodesLexicaux.NOMBRE, yytext());}
-"opPlus"  { return symbol(CodesLexicaux.OPPLUS);}
-"opMoins"  { return symbol(CodesLexicaux.OPMOINS);}
-"opMult"  { return symbol(CodesLexicaux.OPMULT);}
-"opDiff"  { return symbol(CodesLexicaux.OPDIFF);}
-"opEgal"  { return symbol(CodesLexicaux.OPEGAL);}
-"opSup"  { return symbol(CodesLexicaux.OPSUP);}
-"opInf"  { return symbol(CodesLexicaux.OPINF);}
-"parO"  { return symbol(CodesLexicaux.PARO);}
-"parF"  { return symbol(CodesLexicaux.PARF);}
+{nombre}  { return symbol(CodesLexicaux.NOMBRE, yytext());}
+{opPlus}  { return symbol(CodesLexicaux.OPPLUS);}
+{opMoins}  { return symbol(CodesLexicaux.OPMOINS);}
+{opMult}  { return symbol(CodesLexicaux.OPMULT);}
+{opDiff}  { return symbol(CodesLexicaux.OPDIFF);}
+{opEgal}  { return symbol(CodesLexicaux.OPEGAL);}
+{opSup}  { return symbol(CodesLexicaux.OPSUP);}
+{opInf}  { return symbol(CodesLexicaux.OPINF);}
+{parO}  { return symbol(CodesLexicaux.PARO);}
+{parF}  { return symbol(CodesLexicaux.PARF);}
 
 
 .                       {}
