@@ -1,4 +1,4 @@
-package compiler.tools ;
+package analyse ;
 
 import java_cup.runtime.*;
       
