@@ -1,7 +1,12 @@
 package compiler;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
@@ -45,9 +50,25 @@ public class PlicCompiler {
 		return tree;
 	}
 
+	public static void writeFile(AbstractTree tree, String fileName) {
+		try {
+			String finalCode = tree.getCompiledCode();
+			File file = new File(fileName);
+			file.createNewFile();
+			FileOutputStream fileFlux = new FileOutputStream(file);
+			FileWriter fw = new FileWriter(file);
+			fw.write(finalCode);
+			fileFlux.close();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		String fileIn = "exp.plic";
-		String fileOut = "exp.mips";
+		String fileOut = "exp.ams";
 		if (args.length >= 2) {
 			fileIn = args[1];
 			fileOut = args[2];
@@ -60,6 +81,7 @@ public class PlicCompiler {
 		AbstractTree tree = compile(code);
 		System.out.println("Ecriture du fichier destination");
 		System.out.println(tree.getSourceCode());
-		System.out.println(tree.getCompiledCode());
+		writeFile(tree, fileOut);
+		// System.out.println(tree.getCompiledCode());
 	}
 }

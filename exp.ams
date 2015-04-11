@@ -1,0 +1,48 @@
+li $v0, 3
+#Code cible qui évalue l'expression gauche et la stocke dans $v0 
+sw $v0, ($sp)
+addi $sp, $sp, -4
+li $v0, 78
+#Code cible qui évalue l'expression droite et la stocke dans $v0 
+addi $sp, $sp, 4
+lw $t8, ($sp)
+# realisation de l'opération demandé pour les opérations artihmétiques binaires 
+#addition 
+add $v0, $t8, $v0
+#Code cible qui évalue l'expression gauche et la stocke dans $v0 
+sw $v0, ($sp)
+addi $sp, $sp, -4
+li $v0, 56
+#Code cible qui évalue l'expression gauche et la stocke dans $v0 
+sw $v0, ($sp)
+addi $sp, $sp, -4
+li $v0, 2
+#Code cible qui évalue l'expression droite et la stocke dans $v0 
+addi $sp, $sp, 4
+lw $t8, ($sp)
+# realisation de l'opération demandé pour les opérations artihmétiques binaires 
+#multiplication 
+mul $v0, $t8, $v0
+#Code cible qui évalue l'expression droite et la stocke dans $v0 
+addi $sp, $sp, 4
+lw $t8, ($sp)
+# realisation de l'opération demandé pour les opérations artihmétiques binaires 
+#soustraction 
+sub $v0, $t8, $v0
+#Code cible qui évalue l'expression gauche et la stocke dans $v0 
+sw $v0, ($sp)
+addi $sp, $sp, -4
+li $v0, 13
+#Code cible qui évalue l'expression droite et la stocke dans $v0 
+addi $sp, $sp, 4
+lw $t8, ($sp)
+# realisation de l'opération demandé pour les opérations artihmétiques binaires 
+#creation de -13 
+li, $t8, 0
+sub $v0, $t8, $v0
+#Code cible qui évalue l'expression droite et la stocke dans $v0 
+addi $sp, $sp, 4
+lw $t8, ($sp)
+# realisation de l'opération demandé pour les opérations artihmétiques binaires 
+#addition 
+add $v0, $t8, $v0

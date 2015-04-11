@@ -19,7 +19,6 @@ public class Constante extends Expression {
 
 	@Override 
 	public String getSourceCode() {
-		// TODO ecrire le bon code
 		return "" + cst;
 	}
 
