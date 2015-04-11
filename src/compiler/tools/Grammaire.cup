@@ -4,14 +4,14 @@ import java_cup.runtime.*;
 import compiler.AbstractTree;
 import compiler.Constante;
 import compiler.Expression;
-import compiler.oprator.arithmetic.binary.OperatorMinus;
-import compiler.oprator.arithmetic.binary.OperatorMulti;
-import compiler.oprator.arithmetic.binary.OperatorPlus;
-import compiler.oprator.arithmetic.unary.OperatorUnaryMinus;
-import compiler.oprator.logical.binary.OperatorDiff;
-import compiler.oprator.logical.binary.OperatorEquals;
-import compiler.oprator.logical.binary.OperatorInferior;
-import compiler.oprator.logical.binary.OperatorSuperior;
+import compiler.operator.arithmetic.binary.OperatorMinus;
+import compiler.operator.arithmetic.binary.OperatorMulti;
+import compiler.operator.arithmetic.binary.OperatorPlus;
+import compiler.operator.arithmetic.unary.OperatorUnaryMinus;
+import compiler.operator.logical.binary.OperatorDiff;
+import compiler.operator.logical.binary.OperatorEquals;
+import compiler.operator.logical.binary.OperatorInferior;
+import compiler.operator.logical.binary.OperatorSuperior;
 
 action code {: /* vide pour le moment */
 	    :} ;

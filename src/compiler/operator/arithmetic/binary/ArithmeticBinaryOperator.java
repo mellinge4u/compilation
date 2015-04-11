@@ -1,20 +1,20 @@
-package compiler.oprator.logical.binary;
+package compiler.operator.arithmetic.binary;
 
 import compiler.Expression;
 
-public abstract class LogicalBinaryOperator extends Expression {
+public abstract class ArithmeticBinaryOperator extends Expression {
 
-	protected Expression expRight;
 	protected Expression expLeft;
-
-	public LogicalBinaryOperator(Expression expL, Expression expR) {
+	protected Expression expRight;
+	
+	public ArithmeticBinaryOperator(Expression expL, Expression expR) {
 		expLeft = expL;
 		expRight = expR;
 	}
 
 	public abstract String getOpCode();
-
-	public String getCompiledCode() {
+	
+	public String getCompiledCode(){
 		StringBuilder sb = new StringBuilder();
 		sb.append(expLeft.getCompiledCode());
 		sb.append("#Code cible qui évalue l'expression gauche et la stocke dans $v0 \n");
@@ -27,6 +27,7 @@ public abstract class LogicalBinaryOperator extends Expression {
 		sb.append("# realisation de l'opération demandé pour les opérations artihmétiques binaires \n");
 		sb.append(this.getOpCode());
 		return sb.toString();
-
+		
 	}
+	
 }

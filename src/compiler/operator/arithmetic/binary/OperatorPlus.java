@@ -1,4 +1,4 @@
-package compiler.oprator.arithmetic.binary;
+package compiler.operator.arithmetic.binary;
 
 import compiler.Expression;
 

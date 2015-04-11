@@ -1,4 +1,4 @@
-package compiler.oprator.logical.binary;
+package compiler.operator.logical.binary;
 
 import compiler.Expression;
 

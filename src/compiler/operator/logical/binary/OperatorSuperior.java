@@ -1,10 +1,10 @@
-package compiler.oprator.logical.binary;
+package compiler.operator.logical.binary;
 
 import compiler.Expression;
 
-public class OperatorEquals extends LogicalBinaryOperator {
+public class OperatorSuperior extends LogicalBinaryOperator {
 
-	public OperatorEquals(Expression expL, Expression expR) {
+	public OperatorSuperior(Expression expL, Expression expR) {
 		super(expL, expR);
 	}
 
@@ -13,7 +13,7 @@ public class OperatorEquals extends LogicalBinaryOperator {
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
 		sb.append(expLeft.getSourceCode());
-		sb.append(" = ");
+		sb.append(" > ");
 		sb.append(expRight.getSourceCode());
 		sb.append(")");
 		return sb.toString();
@@ -21,8 +21,8 @@ public class OperatorEquals extends LogicalBinaryOperator {
 
 	public String getOpCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("#egual a \n");
-		sb.append("beq $v0, $t8, iftrue\n");//TODO incrementer le else 
+		sb.append("#est suppérieur à \n");
+		sb.append("bgt $v0, $t8, iftrue\n");//TODO incrementer le else 
 		sb.append("li $v0, 0\n");
 		sb.append("j fin\n");//TODO incrementer le fin
 		sb.append("iftrue :\n");

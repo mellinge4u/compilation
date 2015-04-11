@@ -1,9 +1,9 @@
 package compiler;
 
-import compiler.oprator.arithmetic.binary.OperatorMinus;
-import compiler.oprator.arithmetic.binary.OperatorPlus;
-import compiler.oprator.arithmetic.unary.OperatorUnaryMinus;
-import compiler.oprator.logical.binary.OperatorInferior;
+import compiler.operator.arithmetic.binary.OperatorMinus;
+import compiler.operator.arithmetic.binary.OperatorPlus;
+import compiler.operator.arithmetic.unary.OperatorUnaryMinus;
+import compiler.operator.logical.binary.OperatorInferior;
 
 public class SourceCode {
 

@@ -1,5 +1,6 @@
 package compiler;
 
+
 public class Constante extends Expression {
 
 	protected int cst;

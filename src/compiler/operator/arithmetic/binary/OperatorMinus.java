@@ -1,19 +1,20 @@
-package compiler.oprator.arithmetic.binary;
+package compiler.operator.arithmetic.binary;
 
 import compiler.Expression;
 
 
-public class OperatorMulti extends ArithmeticBinaryOperator {
+public class OperatorMinus extends ArithmeticBinaryOperator {
 
-	public OperatorMulti(Expression expL, Expression expR) {
+	public OperatorMinus(Expression expL, Expression expR) {
 		super(expL, expR);
 	}
 
+	@Override
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
 		sb.append(expLeft.getSourceCode());
-		sb.append(" * ");
+		sb.append(" - ");
 		sb.append(expRight.getSourceCode());
 		sb.append(")");
 		return sb.toString();
@@ -21,9 +22,9 @@ public class OperatorMulti extends ArithmeticBinaryOperator {
 
 	public String getOpCode(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("#multiplication \n");
-		sb.append("mul $v0, $t8, $v0\n");
+		sb.append("#soustraction \n");
+		sb.append("sub $v0, $t8, $v0\n");
 		return sb.toString();
 	}
-
+	
 }

@@ -1,4 +1,4 @@
-package compiler.oprator.arithmetic.unary;
+package compiler.operator.arithmetic.unary;
 
 import compiler.Expression;
 
