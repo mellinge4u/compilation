@@ -3,7 +3,6 @@ package compiler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +23,7 @@ public class PlicCompiler {
 			BufferedReader d = new BufferedReader(isr);
 			code.append(d.readLine());
 			code.append("\n");
+			d.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erreur : Lecture du fichier");
@@ -52,7 +52,7 @@ public class PlicCompiler {
 
 	public static void writeFile(AbstractTree tree, String fileName) {
 		try {
-			String finalCode = tree.getCompiledCode();
+			String finalCode = tree.getCompiledCode(new Compteur(0));
 			File file = new File(fileName);
 			file.createNewFile();
 			FileOutputStream fileFlux = new FileOutputStream(file);

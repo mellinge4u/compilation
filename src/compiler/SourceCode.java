@@ -27,7 +27,7 @@ public class SourceCode {
 	}
 	
 	public void printBuilt() {
-		System.out.println(buildCode.getCompiledCode());
+		System.out.println(buildCode.getCompiledCode(new Compteur(0)));
 	}
 
 	public static void main(String[] args) {

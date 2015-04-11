@@ -8,6 +8,6 @@ public abstract class AbstractTree {
 
 	public abstract String getSourceCode();
 
-	public abstract String getCompiledCode();
+	public abstract String getCompiledCode(Compteur i);
 	
 }

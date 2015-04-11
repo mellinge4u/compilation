@@ -1,5 +1,6 @@
 package compiler.operator.arithmetic.unary;
 
+import compiler.Compteur;
 import compiler.Expression;
 
 public abstract class ArithmeticUnaryOperator extends Expression {
@@ -12,9 +13,9 @@ public abstract class ArithmeticUnaryOperator extends Expression {
 	
 public abstract String getOpCode();
 	
-	public String getCompiledCode(){
+	public String getCompiledCode(Compteur i){
 		StringBuilder sb = new StringBuilder();
-		sb.append(exp.getCompiledCode());
+		sb.append(exp.getCompiledCode(i));
 		sb.append("#Code cible qui évalue l'expression droite et la stocke dans $v0 \n");
 		sb.append("addi $sp, $sp, 4\n");
 		sb.append("lw $t8, ($sp)\n");

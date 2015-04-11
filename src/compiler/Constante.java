@@ -17,12 +17,11 @@ public class Constante extends Expression {
 		this.cst = cst;
 	}
 
-	@Override 
 	public String getSourceCode() {
 		return "" + cst;
 	}
 
-	public String getCompiledCode(){
+	public String getCompiledCode(Compteur i){
 		StringBuilder sb = new StringBuilder();
 		//sb.append("/*Code cible qui évalue la constant et la stocke dans $v0 */");
 		sb.append("li $v0, "+cst+"\n");

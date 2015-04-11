@@ -1,5 +1,6 @@
 package compiler.operator.logical.binary;
 
+import compiler.Compteur;
 import compiler.Expression;
 
 public class OperatorEquals extends LogicalBinaryOperator {
@@ -19,15 +20,16 @@ public class OperatorEquals extends LogicalBinaryOperator {
 		return sb.toString();
 	}
 
-	public String getOpCode(){
+	public String getOpCode(Compteur i){
 		StringBuilder sb = new StringBuilder();
 		sb.append("#egual a \n");
-		sb.append("beq $v0, $t8, iftrue\n");//TODO incrementer le else 
+		sb.append("beq $v0, $t8, iftrue" + i.getValue() + "\n");
 		sb.append("li $v0, 0\n");
-		sb.append("j fin\n");//TODO incrementer le fin
-		sb.append("iftrue :\n");
+		sb.append("j fin" + i.getValue() + "\n");
+		sb.append("iftrue" + i.getValue() + " :\n");
 		sb.append("li $v0, 1\n");
-		sb.append("fin :\n");//TODO incrementer le fin
+		sb.append("fin" + i.getValue() + " :\n");
+		i.increment();
 		return sb.toString();
 	}
 }
