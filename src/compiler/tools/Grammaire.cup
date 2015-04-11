@@ -84,64 +84,39 @@ terminal Symbol    PARF;
    integer value are listed.  An object value means that it can be any type, it isn't set to a 
    specific type.  So it could be an Integer or a String or whatever. */
 
-non terminal AbstractTree	 INST ;
+non terminal AbstractTree PROG ;
 non terminal Expression EXP;
 
 precedence left OPDIFF, OPEGAL, OPINF, OPSUP;
-
 precedence left OPPLUS , OPMOINS;
 precedence left OPMULT ;
+
 /* ----------------------------Grammar Section-------------------- */
 
-start with INST ;
+start with PROG ;
 
-/*PROG	::=	PROG INST
-		{: System.out.println("fini !") ; :}
-		
-		| INST;*/
-
-INST	::=	EXP:e POINTVIRGULE
-			{:
-				RESULT = e;
-			:};
+PROG	::=	EXP:e POINTVIRGULE
+				{: RESULT = e; :}
+		;
 			
-EXP		::= PARO EXP:e1 PARF
-		{:
-			RESULT = e1;
-		:}
-		| EXP:e1 OPPLUS EXP:e2
-		{:
-			RESULT = new OperatorPlus(e1,e2);
-		:}
-		| EXP:e1 OPMOINS EXP:e2
-		{:
-			RESULT = new OperatorMinus(e1,e2);
-		:}
-		| EXP:e1 OPMULT EXP:e2
-		{:
-			RESULT = new OperatorMulti(e1,e2);
-		:}
-		| EXP:e1 OPEGAL EXP:e2
-		{:
-			RESULT = new OperatorEquals(e1,e2);
-		:}
-		| OPMOINS EXP:e
-		{:
-			RESULT = new OperatorUnaryMinus(e);
-		:}
-		| EXP:e1 OPDIFF EXP:e2
-		{:
-			RESULT = new OperatorDiff(e1,e2);
-		:}
-		| EXP:e1 OPSUP EXP:e2
-		{:
-			RESULT = new OperatorSuperior(e1,e2);
-		:}
-		| EXP:e1 OPINF EXP:e2
-		{:
-			RESULT = new OperatorInferior(e1,e2);
-		:}
-		| NOMBRE:n
-		{:
-			RESULT = new Constante(n);
-		:};
+EXP		::= NOMBRE:n
+				{: RESULT = new Constante(n); :}
+		|	PARO EXP:e PARF
+				{: RESULT = e; :}
+		|	OPMOINS EXP:e
+				{: RESULT = new OperatorUnaryMinus(e); :}
+		|	EXP:e1 OPPLUS EXP:e2
+				{: RESULT = new OperatorPlus(e1,e2); :}
+		|	EXP:e1 OPMOINS EXP:e2
+				{: RESULT = new OperatorMinus(e1,e2); :}
+		|	EXP:e1 OPMULT EXP:e2
+				{: RESULT = new OperatorMulti(e1,e2); :}
+		|	EXP:e1 OPSUP EXP:e2
+				{: RESULT = new OperatorSuperior(e1,e2); :}
+		|	EXP:e1 OPINF EXP:e2
+				{: RESULT = new OperatorInferior(e1,e2); :}
+		|	EXP:e1 OPEGAL EXP:e2
+				{: RESULT = new OperatorEquals(e1,e2); :}
+		|	EXP:e1 OPDIFF EXP:e2
+				{: RESULT = new OperatorDiff(e1,e2); :}
+		;

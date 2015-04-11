@@ -32,7 +32,7 @@ nombre = {chiffre}+
 opPlus = \+
 opMoins = -
 opMult = \*
-opDiff = !=
+opDiff = \!=
 opEgal = ==
 opSup = \>
 opInf = \<
@@ -43,17 +43,15 @@ parF = \)
 ";"                	{ return symbol(CodesLexicaux.POINTVIRGULE); }
 
 {opEgal}  { return symbol(CodesLexicaux.OPEGAL);}
+{opDiff}  { return symbol(CodesLexicaux.OPDIFF);}
 {opSup}  { return symbol(CodesLexicaux.OPSUP);}
 {opInf}  { return symbol(CodesLexicaux.OPINF);}
 {parO}  { return symbol(CodesLexicaux.PARO);}
 {parF}  { return symbol(CodesLexicaux.PARF);}
-{nombre}  { return symbol(CodesLexicaux.NOMBRE, yytext());}
 {opPlus}  { return symbol(CodesLexicaux.OPPLUS);}
 {opMoins}  { return symbol(CodesLexicaux.OPMOINS);}
 {opMult}  { return symbol(CodesLexicaux.OPMULT);}
-{opDiff}  { return symbol(CodesLexicaux.OPDIFF);}
-
-
+{nombre}  { return symbol(CodesLexicaux.NOMBRE, yytext());}
 
 .                       {}
 \n                      {}
