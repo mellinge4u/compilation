@@ -1,5 +1,6 @@
 package compiler;
 
+import java.lang.reflect.UndeclaredThrowableException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -55,9 +56,21 @@ public class SymbolsTable {
 		stack.pop();
 	}
 	
-	public Symbol identifier(){
-		return null;
-		
+	public String identifier(Symbol s){
+		LocalDictionary currentLD = stack.peek();
+		String name = "empty";
+		if(currentLD.contains(s)){
+			name = s.getName();
+		} else {
+			for(int i = stack.size()-2; i >= 0;i--){
+				currentLD = stack.get(i);
+				if(currentLD.contains(s)){
+					name = s.getName();
+				}
+			}
+		}
+		return name;
+		// rajouter la gestion des exception : UndeclaredDeclarationException
 	}
 	
 }
