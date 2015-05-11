@@ -1,6 +1,5 @@
-package compiler;
+package compiler.tds;
 
-import java.lang.reflect.UndeclaredThrowableException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -57,7 +56,7 @@ public class SymbolsTable {
 	}
 	
 	public String identifier(Symbol s){
-		LocalDictionary currentLD = stack.peek();
+		LocalDictionary  currentLD = stack.peek();
 		String name = "empty";
 		if(currentLD.contains(s)){
 			name = s.getName();

@@ -1,4 +1,4 @@
-package compiler;
+package compiler.tds;
 
 import java.util.ArrayList;
 

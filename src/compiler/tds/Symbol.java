@@ -1,13 +1,15 @@
-package compiler;
+package compiler.tds;
 
-public class Symbol {
+public abstract class Symbol {
 
 	private String name;
 	private String type;
+	private String visibility;
 	
 	public Symbol(String n, String t){
 		name = n;
 		type = t;
+		visibility = "";
 	}
 
 	public String getName() {
@@ -26,6 +28,14 @@ public class Symbol {
 		this.type = type;
 	}
 	
+	public String getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(String visibility) {
+		this.visibility = visibility;
+	}
+
 	public boolean compare(Symbol s){
 		
 		return name == s.getName() && type == s.getType();
