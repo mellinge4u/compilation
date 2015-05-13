@@ -1,5 +1,5 @@
 package compiler.instruct;
 
-public class Ecrire extends Instruction {
+public abstract class Ecrire extends Instruction {
 
 }

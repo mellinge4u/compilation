@@ -10,4 +10,10 @@ public class EcrireExp extends Ecrire {
 		this.exp = exp;
 	}
 
+	@Override
+	public String getSourceCode() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("ecrire " + exp.getSourceCode() + " ;");
+		return sb.toString();
+	}
 }

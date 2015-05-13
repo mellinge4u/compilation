@@ -30,7 +30,7 @@ public class Decl_champ extends Declaration {
 		for (int i = 1; i < idfs.size(); i++) {
 			sb.append(", " + idfs.get(1));
 		}
-		sb.append(';');
+		sb.append(" ;");
 		return sb.toString();
 	}
 

@@ -8,4 +8,11 @@ public class EcrireChaine extends Ecrire {
 		this.chaine = chaine;
 	}
 
+	@Override
+	public String getSourceCode() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("ecrire " + chaine + " ;");
+		return sb.toString();
+	}
+
 }
