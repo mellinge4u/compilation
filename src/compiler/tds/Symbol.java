@@ -4,7 +4,7 @@ public class Symbol {
 
 	
 	private String type;
-	private enum e_visibility{publique,privee};
+	public enum e_visibility{publique,privee};
 	private e_visibility visibility;
 	private int origine;
 	
