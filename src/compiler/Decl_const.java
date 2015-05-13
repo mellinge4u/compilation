@@ -1,15 +1,29 @@
 package compiler;
 
+import java.util.ArrayList;
+
+import compiler.instruct.Instruction;
+
 public class Decl_const extends Declaration {
 
-	public Decl_const() {
-		// TODO Auto-generated constructor stub
+	protected ArrayList<Instruction> instructions;
+	
+	public Decl_const(Instruction inst) {
+		instructions = new ArrayList<Instruction>();
+		instructions.add(inst);
+	}
+	
+	public void addInstruction(Instruction inst) {
+		instructions.add(inst);
 	}
 
 	@Override
 	public String getSourceCode() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sb = new StringBuilder();
+		for (Instruction inst : instructions) {
+			sb.append(inst.getSourceCode() + '\n');
+		}
+		return sb.toString();
 	}
 
 }
