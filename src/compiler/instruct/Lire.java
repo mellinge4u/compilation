@@ -27,10 +27,9 @@ public class Lire extends Instruction {
 		int adDm = s.getOrigine();
 		StringBuilder sb = new StringBuilder();
 		sb.append("# Lire une chaine de caractères\n"
-	+"li $v0, 8 	# $v0 <- code du read\n"
-	+"la $a0, "+adDm+" 	# $a0 <- adresse de la chaîne à écrire\n"
-	+"li $a1, 255 	# $v0 <- nombre de caractères à lire\n"
-	+"syscall 	# lire\n");
+	+"li $v0, 5 	# $v0 <- code du read\n"
+	+"syscall 	# lire\n"
+	+"sw $v0, "+adDm+"($s7)\n" );
 		return sb.toString();
 		
 	}
