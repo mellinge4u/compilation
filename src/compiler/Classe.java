@@ -25,7 +25,7 @@ public class Classe extends Systeme {
 		StringBuilder sb = new StringBuilder();
 		sb.append("classe " + idf + '\n');
 		for (Declaration decl : decls) {
-			sb.append(decl.getSourceCode() + '\n');
+			sb.append(decl.getSourceCode());
 		}
 		sb.append("fin");
 		return sb.toString();

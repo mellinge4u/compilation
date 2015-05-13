@@ -14,7 +14,7 @@ public class EcrireExp extends Ecrire {
 	@Override
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("ecrire " + exp.getSourceCode() + " ;");
+		sb.append("ecrire " + exp.getSourceCode() + ";\n");
 		return sb.toString();
 	}
 

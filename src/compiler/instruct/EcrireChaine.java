@@ -14,7 +14,7 @@ public class EcrireChaine extends Ecrire {
 	@Override
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("ecrire " + chaine + " ;");
+		sb.append("ecrire " + chaine + ";\n");
 		return sb.toString();
 	}
 

@@ -21,7 +21,7 @@ public class Decl_const extends Declaration {
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
 		for (Instruction inst : instructions) {
-			sb.append(inst.getSourceCode() + '\n');
+			sb.append(inst.getSourceCode());
 		}
 		return sb.toString();
 	}

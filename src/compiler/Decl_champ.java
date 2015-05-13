@@ -29,10 +29,14 @@ public class Decl_champ extends Declaration {
 	}
 
 	public void addIdf(String idf) {
+		tds.ajouter(idf, new Symbol(type, this.status));
 		idfs.add(idf);
 	}
 
 	public void addListIdf(ArrayList<String> idfs) {
+		for (String idf : idfs) {
+			tds.ajouter(idf, new Symbol(type, this.status));
+		}
 		this.idfs.addAll(idfs);
 	}
 
@@ -45,7 +49,7 @@ public class Decl_champ extends Declaration {
 		for (int i = 1; i < idfs.size(); i++) {
 			sb.append(", " + idfs.get(1));
 		}
-		sb.append(" ;");
+		sb.append(";\n");
 		return sb.toString();
 	}
 
