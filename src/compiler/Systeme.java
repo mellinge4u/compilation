@@ -1,15 +1,9 @@
 package compiler;
 
-public class Systeme extends AbstractTree {
+public abstract class Systeme extends AbstractTree {
 
 	public Systeme() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String getSourceCode() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
