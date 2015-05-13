@@ -17,7 +17,7 @@ public class Lire extends Instruction {
 	@Override
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("lire " + idf + " ;");
+		sb.append("lire " + idf + ";\n");
 		return sb.toString();
 	} 
 	
