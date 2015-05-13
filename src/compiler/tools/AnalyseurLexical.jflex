@@ -81,4 +81,5 @@ commentaire		= \/\/.*\\n
 
 {commentaire}	{}
 . 				{}
-\\n				{}
+\n				{}
+\r				{}

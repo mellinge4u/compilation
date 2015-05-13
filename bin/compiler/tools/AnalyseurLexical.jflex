@@ -52,7 +52,7 @@ parF 			= \)
 egal			= =
 virgule			= ,
 csteChaine		= ".*"
-commentaire		= //.*\\n
+commentaire		= \/\/.*\\n
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -82,3 +82,4 @@ commentaire		= //.*\\n
 {commentaire}	{}
 . 				{}
 \n				{}
+\r				{}
