@@ -52,6 +52,7 @@ parF 			= \)
 egal			= =
 virgule			= ,
 csteChaine		= ".*"
+commentaire		= \/\/.*\n
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -77,7 +78,7 @@ csteChaine		= ".*"
 {virgule}		{ return symbol(CodesLexicaux.VIRGULE);}
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
 {csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
-
+{commentaire}	{}
 . 				{}
 \n				{}
 " "				{}
