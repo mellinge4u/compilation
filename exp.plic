@@ -3,4 +3,5 @@ classe Essai
 	k=3; 
 	b=8; 
 	lire b;
+	ecrire "bonjour";
 fin

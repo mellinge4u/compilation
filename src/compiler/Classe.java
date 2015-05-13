@@ -38,6 +38,8 @@ public class Classe extends Systeme {
 		sb.append(Data.getInstance().getData()+"\n");// le .data
 		sb.append(".text\n");
 		sb.append("main:\n");
+		sb.append("# Initialisation de s7\n");
+		sb.append("move $s7 , $sp\n");
 		for(Declaration d : decls){
 			sb.append(d.getCompiledCode(i));
 		}
