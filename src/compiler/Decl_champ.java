@@ -48,4 +48,11 @@ public class Decl_champ extends Declaration {
 		return sb.toString();
 	}
 
+	public String getCompiledCode(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("#on reserve de la mémoire en empliantn\n");
+		sb.append("addi $sp, $sp -4");
+		return null;
+	}
+	
 }
