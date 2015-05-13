@@ -134,7 +134,7 @@ CLASSE			::= SYMCLASSE IDF:i L_DECL:ld FIN
 						{: RESULT = new Classe(i); RESULT.addListDecl(ld); :}
 				;
 
-L_DECL			::= DECLARATION:d L_DECL:ld
+L_DECL			::= L_DECL:ld DECLARATION:d
 						{: ld.add(d); RESULT = ld; :}
 				|	/* empty */
 						{: RESULT = new ArrayList<declaration>; :}
@@ -151,7 +151,7 @@ DECL_CHAMP		::= STATUS:s TYPE:t IDF:i L_IDF:li POINTVIRGULE
 				;
 
 L_IDF			::= L_IDF:li VIRGULE IDF:i
-						{: li.addaddListIdf(i); RESULT = li; :}
+						{: li.add(i); RESULT = li; :}
 				|	/* empty */
 						{: RESULT = new ArrayList<String>; :}
 				;
