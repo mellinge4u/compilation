@@ -118,6 +118,7 @@ non terminal ArrayListe<String>			L_IDF;
 
 non terminal Expression EXP;
 
+precedence left SYMCLASSE,FIN,STATUS,TYPE,SYMLIRE,SYMECRIRE,EGAL,VIRGULE,IDF,CSTECHAINE;
 precedence left OPDIFF, OPEGAL, OPINF, OPSUP;
 precedence left OPPLUS , OPMOINS;
 precedence left OPMULT ;
