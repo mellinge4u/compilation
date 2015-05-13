@@ -22,14 +22,14 @@ public class LocalDictionary {
 		dl.add(s);
 	}
 	
-	public boolean contains(Symbol s){
-		boolean contain = false;
-		for(Symbol sy : dl){
-			if(sy.compare(s)){
-				contain = true;
-			}
-		}
-		return contain;
-	}
+//	public boolean contains(Symbol s){
+//		boolean contain = false;
+//		for(Symbol sy : dl){
+//			if(sy.compare(s)){
+//				contain = true;
+//			}
+//		}
+//		return contain;
+//	}
 	
 }

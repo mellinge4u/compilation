@@ -1,23 +1,28 @@
 package compiler.tds;
 
-public abstract class Symbol {
+public class Symbol {
 
-	private String name;
-	private String type;
-	private String visibility;
 	
-	public Symbol(String n, String t){
-		name = n;
+	private String type;
+	private enum e_visibility{publique,privee};
+	private e_visibility visibility;
+	
+	public Symbol(String t, e_visibility v){
 		type = t;
-		visibility = "";
+		visibility = v;
 	}
 
-	public String getName() {
-		return name;
+	public Symbol(Symbol s){
+		type = s.getType();
+		visibility = s.getVisibility();
+	}
+	
+	public e_visibility getVisibility() {
+		return visibility;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setVisibility(e_visibility v) {
+		this.visibility = v;
 	}
 
 	public String getType() {
@@ -28,18 +33,6 @@ public abstract class Symbol {
 		this.type = type;
 	}
 	
-	public String getVisibility() {
-		return visibility;
-	}
 
-	public void setVisibility(String visibility) {
-		this.visibility = visibility;
-	}
-
-	public boolean compare(Symbol s){
-		
-		return name == s.getName() && type == s.getType();
-		
-	}
 	
 }
