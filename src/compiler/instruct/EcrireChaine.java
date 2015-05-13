@@ -26,7 +26,7 @@ public class EcrireChaine extends Ecrire {
 				+"la $a0, str"+i.getValue()+" 	# $a0 <- adresse de la chaîne à écrire\n"
 		+"syscall 	# afficher\n");
 		i.increment();
-		return null;
+		return sb.toString();
 	}
 
 }

@@ -2,4 +2,5 @@ classe Essai
 	publique entier k, b; 
 	k=3; 
 	b=8; 
+	lire b;
 fin
