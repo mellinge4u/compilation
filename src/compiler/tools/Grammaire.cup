@@ -93,7 +93,7 @@ terminal Symbol		FIN;
 terminal String		STATUS;	
 terminal String		TYPE;	
 terminal Symbol		SYMLIRE;	
-terminal Symbol		ECRIRE;	
+terminal Symbol		SYMECRIRE;	
 terminal Symbol		EGAL;	
 terminal Symbol		VIRGULE;
 terminal String		IDF;
@@ -104,6 +104,7 @@ terminal String		CSTECHAINE;
    integer value are listed.  An object value means that it can be any type, it isn't set to a 
    specific type.  So it could be an Integer or a String or whatever. */
 
+non terminal 							SYSTEM;
 non terminal Classe 					CLASSE;
 non terminal 						 	L_DECL;
 non terminal Declaration 				DECLARATION;
@@ -125,18 +126,24 @@ precedence left OPMULT ;
 
 start with SYSTEME ;
 
-SYSTEME 		::= CLASSE
+SYSTEME 		::= CLASSE:c
+						{: RESULT = c :}
 				;
 		
-CLASSE			::= SYMCLASSE IDF L_DECL FIN
+CLASSE			::= SYMCLASSE IDF:i L_DECL:ld FIN
+						{: RESULT = new Classe(i); RESULT.addListDecl(ld); :}
 				;
 
-L_DECL			::= L_DECL DECLARATION
+L_DECL			::= L_DECL:ld DECLARATION:d
+						{: ld.add(d); RESULT = ld; :}
 				|	/* empty */
+						{: RESULT = new ArrayList<declaration>; :}
 				;
 
-DECLARATION		::= DECL_CHAMP 
-				|	DECL_CONST
+DECLARATION		::= DECL_CHAMP:d 
+						{: RESULT = d; :}
+				|	DECL_CONST:d
+						{: RESULT = d; :}
 				;
 				
 DECL_CHAMP		::= STATUS:s TYPE:t IDF:i L_IDF:li POINTVIRGULE

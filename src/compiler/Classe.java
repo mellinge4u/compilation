@@ -16,6 +16,10 @@ public class Classe extends Systeme {
 		decls.add(decl);
 	}
 	
+	public void addListDecl(ArrayList<Declaration> listDecl) {
+		decls.addAll(listDecl);
+	}
+	
 	@Override
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();

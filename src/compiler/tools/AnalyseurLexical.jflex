@@ -39,7 +39,6 @@ chiffre 		= [0-9]
 charAlphaNum	= {lettre}|{chiffre}
 nombre 			= {chiffre}+
 idf				= {lettre}{charAlphaNum}*
-csteChaine		= ".*"
 
 opPlus 			= \+
 opMoins 		= -
@@ -52,6 +51,7 @@ parO 			= \(
 parF 			= \)
 egal			= =
 virgule			= ,
+csteChaine		= ".*"
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
