@@ -21,8 +21,12 @@ public class PlicCompiler {
 			InputStream f = new FileInputStream(fileName);
 			InputStreamReader isr = new InputStreamReader(f);
 			BufferedReader d = new BufferedReader(isr);
-			code.append(d.readLine());
-			code.append("\n");
+			String line;
+			line = d.readLine();
+			while (line != null) {
+				code.append(line + '\n');
+				line = d.readLine();
+			}
 			d.close();
 		} catch (Exception e) {
 			e.printStackTrace();

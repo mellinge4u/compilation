@@ -1,1 +1,5 @@
-classe Essai publique entier k ; k = 3 ; fin
+classe Essai 
+	publique entier k, b; 
+	k=3; 
+	b=8; 
+fin

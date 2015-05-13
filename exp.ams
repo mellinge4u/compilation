@@ -5,6 +5,9 @@ main:
 nullli $v0, 3
 #affectation de 3 dans la variable k
 sw $v0, 0($s7)
+li $v0, 8
+#affectation de 8 dans la variable b
+sw $v0, -4($s7)
 #Fin du programme 
 li $v0 , 5
 syscall #retour au systeme
