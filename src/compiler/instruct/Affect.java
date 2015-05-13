@@ -23,8 +23,8 @@ public class Affect extends Instruction {
 
 	@Override
 	public String getCompiledCode(Compteur i) {
-		TableDesSymboles tds = TableDesSymboles.getInstance();
 		StringBuilder sb = new StringBuilder();
+		TableDesSymboles tds = TableDesSymboles.getInstance();
 		Symbol sym = tds.identifier(idf);
 		int ad = sym.getOrigine();
 		sb.append(exp.getCompiledCode(i));
