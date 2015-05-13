@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project plic1">
+    
+    <property name="source.dir"    value="../src"/>
+    <property name="build.dir"     value="../bin"/>
+
+    <property name="jar.dir"       value="jar"/>
+    <property name="jar.file"      value="${jar.dir}/plic1.jar"/>
+    
+    <target name="create_run_jar">
+    
+        <mkdir dir="${jar.dir}"/>
+    
+        <jar destfile="${jar.file}" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="compiler.PlicCompiler"/>
+                <attribute name="Class-Path" value=""/>
+            </manifest>
+            <fileset dir="${build.dir}"/>
+            <fileset dir="${source.dir}"/>
+            <zipfileset excludes="META-INF/*.SF" src="${source.dir}/tools/JFlex.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${source.dir}/tools/JavaCup.jar"/>
+        </jar>
+    </target>
+</project>
