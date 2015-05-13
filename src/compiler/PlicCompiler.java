@@ -47,7 +47,7 @@ public class PlicCompiler {
 			System.exit(1);
 		}
 
-		return tree;
+		return classe;
 	}
 
 	public static void writeFile(AbstractTree tree, String fileName) {
@@ -78,11 +78,11 @@ public class PlicCompiler {
 		String code = readFile(fileIn);
 		System.out.println(code);
 		System.out.println("Traduction en mips");
-		//AbstractTree tree = compile(code);
-		Classe classe = (Classe) compile(code);
+		AbstractTree tree = compile(code);
+		//Classe classe = (Classe) compile(code);
 		System.out.println("Ecriture du fichier destination");
-		System.out.println(classe.getSourceCode());
-		writeFile(classe, fileOut);
+		System.out.println(tree.getSourceCode());
+		writeFile(tree, fileOut);
 		// System.out.println(tree.getCompiledCode());
 	}
 }
