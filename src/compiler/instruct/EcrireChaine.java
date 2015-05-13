@@ -1,5 +1,7 @@
 package compiler.instruct;
 
+import compiler.Compteur;
+
 public class EcrireChaine extends Ecrire {
 
 	protected String chaine;
@@ -13,6 +15,12 @@ public class EcrireChaine extends Ecrire {
 		StringBuilder sb = new StringBuilder();
 		sb.append("ecrire " + chaine + " ;");
 		return sb.toString();
+	}
+
+	@Override
+	public String getCompiledCode(Compteur i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
