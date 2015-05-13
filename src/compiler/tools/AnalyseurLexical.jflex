@@ -39,6 +39,7 @@ chiffre 		= [0-9]
 charAlphaNum	= {lettre}|{chiffre}
 nombre 			= {chiffre}+
 idf				= {lettre}{charAlphaNum}*
+csteChaine		= ".*"
 
 opPlus 			= \+
 opMoins 		= -
@@ -49,7 +50,8 @@ opSup 			= \>
 opInf 			= \<
 parO 			= \(
 parF 			= \)
-egal				= =
+egal			= =
+virgule			= ,
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -65,14 +67,16 @@ egal				= =
 {opMult}  		{ return symbol(CodesLexicaux.OPMULT);}
 {nombre}  		{ return symbol(CodesLexicaux.NOMBRE, yytext());}
 
-{classe}		{ return symbol(CodesLexicaux.CLASSE);}
+{classe}		{ return symbol(CodesLexicaux.SYMCLASSE);}
 {fin}			{ return symbol(CodesLexicaux.FIN);}
 {status}		{ return symbol(CodesLexicaux.STATUS, yytext());}
 {type}			{ return symbol(CodesLexicaux.TYPE, yytext());}
 {lire}			{ return symbol(CodesLexicaux.LIRE);}
 {ecrire}		{ return symbol(CodesLexicaux.ECRIRE);}
 {egal}			{ return symbol(CodesLexicaux.EGAL);}
+{virgule}		{ return symbol(CodesLexicaux.VIRGULE);}
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
+{csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
 
 . 				{}
 \n				{}
