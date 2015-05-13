@@ -3,20 +3,44 @@ package compiler.tds;
 import java.util.HashMap;
 
 /*
+ * Classe rendu singleton
  * Table des symboles pour les classes à un seul bloc
  * On y gère que les entiers
  */
 
-public class TableDesSymboles {
+public final class TableDesSymboles {
 
 	private HashMap<String, Symbol> dictionnaire;
 	private int adDmemoire;
 	
-	public TableDesSymboles(){
+	private static volatile TableDesSymboles instance = null;
+	
+	private TableDesSymboles(){
 		dictionnaire = new HashMap<>();
 		adDmemoire = 0;
 	}
 
+	 /**
+     * Méthode permettant de renvoyer une instance de la classe Singleton
+     * @return Retourne l'instance du singleton.
+     */
+    public final static TableDesSymboles getInstance() {
+        //Le "Double-Checked Singleton"/"Singleton doublement vérifié" permet 
+        //d'éviter un appel coûteux à synchronized, 
+        //une fois que l'instanciation est faite.
+        if (TableDesSymboles.instance == null) {
+           // Le mot-clé synchronized sur ce bloc empêche toute instanciation
+           // multiple même par différents "threads".
+           // Il est TRES important.
+           synchronized(TableDesSymboles.class) {
+             if (TableDesSymboles.instance == null) {
+               TableDesSymboles.instance = new TableDesSymboles();
+             }
+           }
+        }
+        return TableDesSymboles.instance;
+    }
+	
 	public HashMap<String, Symbol> getDictionnaire() {
 		return dictionnaire;
 	}

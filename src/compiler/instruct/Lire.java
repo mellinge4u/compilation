@@ -1,8 +1,12 @@
 package compiler.instruct;
 
+import compiler.Compteur;
+import compiler.tds.TableDesSymboles;
+
 public class Lire extends Instruction {
 
 	protected String idf;
+	protected TableDesSymboles tds;
 
 	public Lire(String idf){
 		this.idf = idf;
@@ -14,5 +18,12 @@ public class Lire extends Instruction {
 		sb.append("lire " + idf + " ;");
 		return sb.toString();
 	} 
+	
+	public String getCompiledCode(Compteur i){
+		
+		
+		return idf;
+		
+	}
 	
 }
