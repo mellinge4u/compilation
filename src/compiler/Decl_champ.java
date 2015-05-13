@@ -12,7 +12,7 @@ public class Decl_champ extends Declaration {
 	};
 
 	protected Symbol.e_visibility status;
-//	protected e_type type;	// TODO Definir le type de type
+	// protected e_type type; // TODO Definir le type de type
 	protected String type;
 	protected ArrayList<String> idfs;
 	protected static TableDesSymboles tds = TableDesSymboles.getInstance();
@@ -26,9 +26,9 @@ public class Decl_champ extends Declaration {
 			throw new DevlopperErrorException(
 					"Probleme avec Jflex et cup sur les status\n");
 		}
-		
+
 		tds.ajouter(idf, new Symbol(type, this.status));
-		
+
 		idfs = new ArrayList<String>();
 		idfs.add(idf);
 	}
@@ -57,14 +57,10 @@ public class Decl_champ extends Declaration {
 	public String getCompiledCode(){
 		StringBuilder sb = new StringBuilder();
 		int origin;
-		switch (type) {
-		case entier:
+		if (type == "entier") {		
 			origin = -4;
-			break;
-		default:
-			throw new DevlopperErrorException("Problème avec le type d'une variable sur la génération du code Mips\n")
-			origin = 0;
-			break;
+		} else {
+			throw new DevlopperErrorException("Problème avec le type d'une variable sur la génération du code Mips\n");
 		}
 		sb.append("#on reserve de la mémoire en empliantn\n");
 		sb.append("addi $sp, $sp " + origin);
