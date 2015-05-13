@@ -28,4 +28,9 @@ public class Classe extends Systeme {
 	}
 	
 
+	public String getCompiledCode(Compteur i){
+		
+		return idf;
+	}
+	
 }
