@@ -71,8 +71,8 @@ csteChaine		= ".*"
 {fin}			{ return symbol(CodesLexicaux.FIN);}
 {status}		{ return symbol(CodesLexicaux.STATUS, yytext());}
 {type}			{ return symbol(CodesLexicaux.TYPE, yytext());}
-{lire}			{ return symbol(CodesLexicaux.LIRE);}
-{ecrire}		{ return symbol(CodesLexicaux.ECRIRE);}
+{lire}			{ return symbol(CodesLexicaux.SYMLIRE);}
+{ecrire}		{ return symbol(CodesLexicaux.SYMECRIRE);}
 {egal}			{ return symbol(CodesLexicaux.EGAL);}
 {virgule}		{ return symbol(CodesLexicaux.VIRGULE);}
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
