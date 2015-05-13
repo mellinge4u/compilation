@@ -104,7 +104,7 @@ terminal String		CSTECHAINE;
    integer value are listed.  An object value means that it can be any type, it isn't set to a 
    specific type.  So it could be an Integer or a String or whatever. */
 
-non terminal 							SYSTEME;
+non terminal Classe						SYSTEME;
 non terminal Classe 					CLASSE;
 non terminal 						 	L_DECL;
 non terminal Declaration 				DECLARATION;
