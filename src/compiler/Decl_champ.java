@@ -10,15 +10,29 @@ public class Decl_champ extends Declaration {
 	protected e_type type;
 	protected ArrayList<String> idfs;
 	
-	public Decl_champ(e_status status, e_type type, String idf) {
-		this.status = status;
-		this.type = type;
+	public Decl_champ(String status, String type, String idf) {
+		if (status == "publique") {
+			this.status = e_status.publique;
+		} else if (status == "privee") {
+			this.status = e_status.privee;
+		} else {
+			throw new DevlopperErrorException("Probleme avec Jflex et cup sur les status\n");
+		}
+		if (type == "entier") {
+			this.type = e_type.entier;
+		} else {
+			throw new DevlopperErrorException("Probleme avec Jflex et cup sur les types\n");
+		}
 		idfs = new ArrayList<String>();
 		idfs.add(idf);
 	}
 
 	public void addIdf(String idf) {
 		idfs.add(idf);
+	}
+	
+	public void addListIdf(ArrayList<String> idfs) {
+		this.idfs.addAll(idfs);
 	}
 	
 	@Override

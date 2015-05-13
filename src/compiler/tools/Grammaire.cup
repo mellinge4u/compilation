@@ -4,6 +4,9 @@ import java_cup.runtime.*;
 import compiler.AbstractTree;
 import compiler.Classe;
 import compiler.Constante;
+import compiler.Decl_champ;
+import compiler.Decl_const;
+import compiler.Declaration;
 import compiler.Expression;
 import compiler.instruct.Affect;
 import compiler.instruct.EcrireChaine;
@@ -110,7 +113,7 @@ non terminal Instruction 				INSTRUCTION;
 non terminal Affect 					AFFECT;
 non terminal Lire 						LIRE;
 non terminal Ecrire 					ECRIRE;
-non terminal 							L_IDF;
+non terminal ArrayListe<String>			L_IDF;
 
 non terminal Expression EXP;
 
@@ -137,10 +140,13 @@ DECLARATION		::= DECL_CHAMP
 				;
 				
 DECL_CHAMP		::= STATUS TYPE IDF L_IDF POINTVIRGULE
+						{: RESULT = new Decl_champ(); :}
 				;
 
-L_IDF			::= L_IDF VIRGULE IDF
+L_IDF			::= L_IDF:li VIRGULE IDF:i
+						{: li.addaddListIdf(i); RESULT = li; :}
 				|	/* empty */
+						{: RESULT = new ArrayList<String>; :}
 				;
 
 DECL_CONST		::=	DECL_CONST:dc INSTRUCTION:i
