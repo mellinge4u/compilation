@@ -71,22 +71,19 @@ public class PlicCompiler {
 	}
 	
 	public static void main(String[] args) {
-		String fileIn = "exp.plic";
-		String fileOut = "exp.ams";
-		if (args.length >= 2) {
-			fileIn = args[1];
-			fileOut = args[2];
+		String fileIn = null;
+		String fileOut = null;
+		if (args.length == 2) {
+			fileIn = args[0];
+			fileOut = args[1];
+		} else {
+			System.out.println("Erreur : Il n'y a pas le bon nombre d'arguments");
+			System.out.println("ex : plic source.plic destination.asm");
+			System.exit(-1);
 		}
-		System.out.println("Début de la compilation");
-		System.out.println("Lecture du fichier source");
 		String code = readFile(fileIn);
-		System.out.println(code);
-		System.out.println("Traduction en mips");
 		AbstractTree tree = compile(code);
-		//Classe classe = (Classe) compile(code);
-		System.out.println("Ecriture du fichier destination");
-		System.out.println(tree.getSourceCode());
+		tree.getSourceCode();
 		writeFile(tree, fileOut);
-		// System.out.println(tree.getCompiledCode(new Compteur(0)));
 	}
 }
