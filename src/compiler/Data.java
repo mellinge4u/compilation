@@ -12,6 +12,7 @@ public final class Data {
 	
 	private Data(){
 		sb = new StringBuilder();
+		sb.append(".data\n");
 	}
 	
 	 public final static Data getInstance() {

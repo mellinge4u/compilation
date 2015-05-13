@@ -34,8 +34,7 @@ public class Classe extends Systeme {
 
 	public String getCompiledCode(Compteur i){
 		StringBuilder sb = new StringBuilder();
-		sb.append("# Class "+idf+"\n");
-		sb.append(Data.getInstance().getData()+"\n");// le .data
+		
 		sb.append(".text\n");
 		sb.append("main:\n");
 		sb.append("# Initialisation de s7\n");
@@ -46,6 +45,8 @@ public class Classe extends Systeme {
 		sb.append("#Fin du programme \n");
 		sb.append("li $v0 , 5\n");
 		sb.append("syscall #retour au systeme\n");
+		sb.insert(0,Data.getInstance().getData()+"\n");// le .data
+		sb.insert(0,"# Class "+idf+"\n");
 		return sb.toString();
 	}
 	

@@ -23,10 +23,10 @@ public class EcrireExp extends Ecrire {
 		StringBuilder sb = new StringBuilder();
 		exp.getCompiledCode(i);
 		sb.append("# ecrire une chaine de caractères \n"
-				+ "sw $v0, ($sp)"
-				+ "addi $sp, $sp, -4"
+				+ "sw $v0, ($sp)\n"
+				+ "addi $sp, $sp, -4\n"
 				+ "li $v0 , 1 # $v0 <- code du print \n"
-				+ "li $t8, 4($sp) 	# $a0 <- adresse de la chaîne à écrire\n"
+				+ "lw $t8, 4($sp) 	# $a0 <- adresse de la chaîne à écrire\n"
 				+ "syscall 	# afficher\n"
 				+ "addi $sp, $sp, 4");
 		return sb.toString();

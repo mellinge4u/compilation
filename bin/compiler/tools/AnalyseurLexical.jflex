@@ -51,7 +51,7 @@ parO 			= \(
 parF 			= \)
 egal			= =
 virgule			= ,
-csteChaine		= ".*"
+csteChaine		= \".*\"
 commentaire		= \/\/.*\n
 %%
 
