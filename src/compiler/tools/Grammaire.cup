@@ -134,7 +134,7 @@ CLASSE			::= SYMCLASSE IDF:i L_DECL:ld FIN
 						{: RESULT = new Classe(i); RESULT.addListDecl(ld); :}
 				;
 
-L_DECL			::= L_DECL:ld DECLARATION:d
+L_DECL			::= DECLARATION:d L_DECL:ld
 						{: ld.add(d); RESULT = ld; :}
 				|	/* empty */
 						{: RESULT = new ArrayList<declaration>; :}
