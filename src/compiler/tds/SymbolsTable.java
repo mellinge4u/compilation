@@ -55,21 +55,21 @@ public class SymbolsTable {
 		stack.pop();
 	}
 	
-	public String identifier(Symbol s){
-		LocalDictionary  currentLD = stack.peek();
-		String name = "empty";
-		if(currentLD.contains(s)){
-			name = s.getName();
-		} else {
-			for(int i = stack.size()-2; i >= 0;i--){
-				currentLD = stack.get(i);
-				if(currentLD.contains(s)){
-					name = s.getName();
-				}
-			}
-		}
-		return name;
-		// rajouter la gestion des exception : UndeclaredDeclarationException
-	}
+//	public String identifier(Symbol s){
+//		LocalDictionary  currentLD = stack.peek();
+//		String name = "empty";
+//		if(currentLD.contains(s)){
+//			name = s.getName();
+//		} else {
+//			for(int i = stack.size()-2; i >= 0;i--){
+//				currentLD = stack.get(i);
+//				if(currentLD.contains(s)){
+//					name = s.getName();
+//				}
+//			}
+//		}
+//		return name;
+//		// rajouter la gestion des exception : UndeclaredDeclarationException
+//	}
 	
 }
