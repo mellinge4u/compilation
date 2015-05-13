@@ -2,8 +2,14 @@ package compiler.tools;
 
 import java_cup.runtime.*;
 import compiler.AbstractTree;
+import compiler.Classe;
 import compiler.Constante;
 import compiler.Expression;
+import compiler.instruct.Affect;
+import compiler.instruct.EcrireChaine;
+import compiler.instruct.EcrireExp;
+import compiler.instruct.Instuction;
+import compiler.instruct.Lire;
 import compiler.operator.arithmetic.binary.OperatorMinus;
 import compiler.operator.arithmetic.binary.OperatorMulti;
 import compiler.operator.arithmetic.binary.OperatorPlus;
@@ -95,7 +101,17 @@ terminal String		CSTECHAINE;
    integer value are listed.  An object value means that it can be any type, it isn't set to a 
    specific type.  So it could be an Integer or a String or whatever. */
 
-non terminal AbstractTree PROG ;
+non terminal Classe 					CLASSE;
+non terminal 						 	L_DECL;
+non terminal Declaration 				DECLARATION;
+non terminal Decl_champ 				DECL_CHAMP;
+non terminal Decl_const 				DECL_CONST;
+non terminal Instruction 				INSTRUCTION;
+non terminal Affect 					AFFECT;
+non terminal Lire 						LIRE;
+non terminal Ecrire 					ECRIRE;
+non terminal 							L_IDF;
+
 non terminal Expression EXP;
 
 precedence left OPDIFF, OPEGAL, OPINF, OPSUP;
@@ -109,31 +125,50 @@ start with SYSTEME ;
 SYSTEME 		::= CLASSE
 				;
 		
-CLASSE			::= SYMCLASSE IDF {DECLARATION}* FIN
+CLASSE			::= SYMCLASSE IDF L_DECL FIN
 				;
 
-DECLARATION		::= DECL_CHAMP | DECL_CONST
+L_DECL			::= L_DECL DECLARATION
+				|	/* empty */
+				;
+
+DECLARATION		::= DECL_CHAMP 
+				|	DECL_CONST
 				;
 				
-DECL_CHAMP		::= STATUS TYPE IDF {VIRGULE IDF}* POINTVIRGULE
+DECL_CHAMP		::= STATUS TYPE IDF L_IDF POINTVIRGULE
 				;
 
-DECL_CONST		::= {INSTRUCTION}+
+L_IDF			::= L_IDF VIRGULE IDF
+				|	/* empty */
 				;
 
-INSTRUCTION		::= AFFECT 
-				| 	LIRE 
-				| 	ECRIRE
+DECL_CONST		::=	DECL_CONST:dc INSTRUCTION:i
+						{: dc.addInstruction(i); RESULT = dc; :}
+				|	INSTRUCTION:i
+						{: RESULT = new Decl_const(i); :}
 				;
 
-AFFECT			::= IDF EGAL EXP POINTVIRGULE
+INSTRUCTION		::= AFFECT:a
+						{: RESULT = a; :}
+				| 	LIRE:l
+						{: RESULT = l; :}
+				| 	ECRIRE:e
+						{: RESULT = e; :}
 				;
 
-LIRE			::= SYMLIRE IDF POINTVIRGULE
+AFFECT			::= IDF:i EGAL EXPe POINTVIRGULE
+						{: RESULT = new Affect(i, e); :}
 				;
 
-ECRIRE			::= SYMECRIRE EXP POINTVIRGULE
-				|	SYMECRIRE CSTECHAINE POINTVIRGULE
+LIRE			::= SYMLIRE IDF:i POINTVIRGULE
+						{: RESULT = new Lire(i); :}
+				;
+
+ECRIRE			::= SYMECRIRE EXP:e POINTVIRGULE
+						{: RESULT = new EcrireExp(e); :}
+				|	SYMECRIRE CSTECHAINE:c POINTVIRGULE
+						{: RESULT = new EcrireExp(c); :}
 				;
 			
 EXP				::= NOMBRE:n
