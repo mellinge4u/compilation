@@ -67,17 +67,28 @@ parser code {:
    Terminals that have no value are listed first and then terminals that do have a value, in this 
    case a String value, are listed on the next line down. */
 
-terminal Symbol    POINTVIRGULE ;
-terminal String    NOMBRE;
-terminal Symbol    OPPLUS;
-terminal Symbol    OPMOINS;
-terminal Symbol    OPMULT;
-terminal Symbol    OPDIFF;
-terminal Symbol    OPEGAL;
-terminal Symbol    OPSUP;
-terminal Symbol    OPINF;
-terminal Symbol    PARO;
-terminal Symbol    PARF;
+terminal Symbol 	POINTVIRGULE ;
+terminal String 	NOMBRE;
+terminal Symbol 	OPPLUS;
+terminal Symbol 	OPMOINS;
+terminal Symbol 	OPMULT;
+terminal Symbol 	OPDIFF;
+terminal Symbol 	OPEGAL;
+terminal Symbol 	OPSUP;
+terminal Symbol 	OPINF;
+terminal Symbol 	PARO;
+terminal Symbol 	PARF;
+
+terminal Symbol		SYMCLASSE;	
+terminal Symbol		FIN;	
+terminal String		STATUS;	
+terminal String		TYPE;	
+terminal Symbol		SYMLIRE;	
+terminal Symbol		ECRIRE;	
+terminal Symbol		EGAL;	
+terminal Symbol		VIRGULE;
+terminal String		IDF;
+terminal String		CSTECHAINE;
 
 /* Non terminals used in the grammar section.  
    Non terminals that have an object value are listed first and then non terminals that have an 
@@ -93,30 +104,56 @@ precedence left OPMULT ;
 
 /* ----------------------------Grammar Section-------------------- */
 
-start with PROG ;
+start with SYSTEME ;
 
-PROG	::=	EXP:e POINTVIRGULE
-				{: RESULT = e; :}
-		;
+SYSTEME 		::= CLASSE
+				;
+		
+CLASSE			::= SYMCLASSE IDF {DECLARATION}* FIN
+				;
+
+DECLARATION		::= DECL_CHAMP | DECL_CONST
+				;
+				
+DECL_CHAMP		::= STATUS TYPE IDF {VIRGULE IDF}* POINTVIRGULE
+				;
+
+DECL_CONST		::= {INSTRUCTION}+
+				;
+
+INSTRUCTION		::= AFFECT 
+				| 	LIRE 
+				| 	ECRIRE
+				;
+
+AFFECT			::= IDF EGAL EXP POINTVIRGULE
+				;
+
+LIRE			::= SYMLIRE IDF POINTVIRGULE
+				;
+
+ECRIRE			::= SYMECRIRE EXP POINTVIRGULE
+				|	SYMECRIRE CSTECHAINE POINTVIRGULE
+				;
 			
-EXP		::= NOMBRE:n
-				{: RESULT = new Constante(n); :}
-		|	PARO EXP:e PARF
-				{: RESULT = e; :}
-		|	OPMOINS EXP:e
-				{: RESULT = new OperatorUnaryMinus(e); :}
-		|	EXP:e1 OPPLUS EXP:e2
-				{: RESULT = new OperatorPlus(e1,e2); :}
-		|	EXP:e1 OPMOINS EXP:e2
-				{: RESULT = new OperatorMinus(e1,e2); :}
-		|	EXP:e1 OPMULT EXP:e2
-				{: RESULT = new OperatorMulti(e1,e2); :}
-		|	EXP:e1 OPSUP EXP:e2
-				{: RESULT = new OperatorSuperior(e1,e2); :}
-		|	EXP:e1 OPINF EXP:e2
-				{: RESULT = new OperatorInferior(e1,e2); :}
-		|	EXP:e1 OPEGAL EXP:e2
-				{: RESULT = new OperatorEquals(e1,e2); :}
-		|	EXP:e1 OPDIFF EXP:e2
-				{: RESULT = new OperatorDiff(e1,e2); :}
-		;
+EXP				::= NOMBRE:n
+						{: RESULT = new Constante(n); :}
+				|	PARO EXP:e PARF
+						{: RESULT = e; :}
+				|	OPMOINS EXP:e
+						{: RESULT = new OperatorUnaryMinus(e); :}
+				|	EXP:e1 OPPLUS EXP:e2
+						{: RESULT = new OperatorPlus(e1,e2); :}
+				|	EXP:e1 OPMOINS EXP:e2
+						{: RESULT = new OperatorMinus(e1,e2); :}
+				|	EXP:e1 OPMULT EXP:e2
+						{: RESULT = new OperatorMulti(e1,e2); :}
+				|	EXP:e1 OPSUP EXP:e2
+						{: RESULT = new OperatorSuperior(e1,e2); :}
+				|	EXP:e1 OPINF EXP:e2
+						{: RESULT = new OperatorInferior(e1,e2); :}
+				|	EXP:e1 OPEGAL EXP:e2
+						{: RESULT = new OperatorEquals(e1,e2); :}
+				|	EXP:e1 OPDIFF EXP:e2
+						{: RESULT = new OperatorDiff(e1,e2); :}
+				;
