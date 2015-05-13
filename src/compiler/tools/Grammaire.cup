@@ -1,6 +1,7 @@
 package compiler.tools;
 
 import java_cup.runtime.*;
+import java.util.*;
 import compiler.AbstractTree;
 import compiler.Classe;
 import compiler.Constante;
@@ -9,9 +10,10 @@ import compiler.Decl_const;
 import compiler.Declaration;
 import compiler.Expression;
 import compiler.instruct.Affect;
+import compiler.instruct.Ecrire;
 import compiler.instruct.EcrireChaine;
 import compiler.instruct.EcrireExp;
-import compiler.instruct.Instuction;
+import compiler.instruct.Instruction;
 import compiler.instruct.Lire;
 import compiler.operator.arithmetic.binary.OperatorMinus;
 import compiler.operator.arithmetic.binary.OperatorMulti;
@@ -106,7 +108,7 @@ terminal String		CSTECHAINE;
 
 non terminal Classe						SYSTEME;
 non terminal Classe 					CLASSE;
-non terminal 						 	L_DECL;
+non terminal ArrayList<Declaration>		L_DECL;
 non terminal Declaration 				DECLARATION;
 non terminal Decl_champ 				DECL_CHAMP;
 non terminal Decl_const 				DECL_CONST;
@@ -114,7 +116,7 @@ non terminal Instruction 				INSTRUCTION;
 non terminal Affect 					AFFECT;
 non terminal Lire 						LIRE;
 non terminal Ecrire 					ECRIRE;
-non terminal ArrayListe<String>			L_IDF;
+non terminal ArrayList<String>			L_IDF;
 
 non terminal Expression EXP;
 
@@ -128,7 +130,7 @@ precedence left OPMULT ;
 start with SYSTEME ;
 
 SYSTEME 		::= CLASSE:c
-						{: RESULT = c :}
+						{: RESULT = c; :}
 				;
 		
 CLASSE			::= SYMCLASSE IDF:i L_DECL:ld FIN
@@ -138,7 +140,7 @@ CLASSE			::= SYMCLASSE IDF:i L_DECL:ld FIN
 L_DECL			::= L_DECL:ld DECLARATION:d
 						{: ld.add(d); RESULT = ld; :}
 				|	/* empty */
-						{: RESULT = new ArrayList<declaration>; :}
+						{: RESULT = new ArrayList<Declaration>(); :}
 				;
 
 DECLARATION		::= DECL_CHAMP:d 
@@ -154,7 +156,7 @@ DECL_CHAMP		::= STATUS:s TYPE:t IDF:i L_IDF:li POINTVIRGULE
 L_IDF			::= L_IDF:li VIRGULE IDF:i
 						{: li.add(i); RESULT = li; :}
 				|	/* empty */
-						{: RESULT = new ArrayList<String>; :}
+						{: RESULT = new ArrayList<String>(); :}
 				;
 
 DECL_CONST		::=	DECL_CONST:dc INSTRUCTION:i
@@ -182,7 +184,7 @@ LIRE			::= SYMLIRE IDF:i POINTVIRGULE
 ECRIRE			::= SYMECRIRE EXP:e POINTVIRGULE
 						{: RESULT = new EcrireExp(e); :}
 				|	SYMECRIRE CSTECHAINE:c POINTVIRGULE
-						{: RESULT = new EcrireExp(c); :}
+						{: RESULT = new EcrireChaine(c); :}
 				;
 			
 EXP				::= NOMBRE:n
