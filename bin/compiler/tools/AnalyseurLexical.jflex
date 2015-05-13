@@ -16,7 +16,7 @@ import java_cup.runtime.*;
 %eofval}
 
 %cup
-   
+   	
 %{
   private Symbol symbol(int type) {
 	return new Symbol(type, yyline, yycolumn) ;
@@ -52,7 +52,6 @@ parF 			= \)
 egal			= =
 virgule			= ,
 csteChaine		= ".*"
-commentaire		= \/\/.*\\n
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -79,7 +78,6 @@ commentaire		= \/\/.*\\n
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
 {csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
 
-{commentaire}	{}
 . 				{}
 \n				{}
-\r				{}
+" "				{}
