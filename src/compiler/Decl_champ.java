@@ -7,12 +7,7 @@ import compiler.tds.TableDesSymboles;
 
 public class Decl_champ extends Declaration {
 
-	public enum e_type {
-		entier
-	};
-
 	protected Symbol.e_visibility status;
-	// protected e_type type; // TODO Definir le type de type
 	protected String type;
 	protected ArrayList<String> idfs;
 	protected static TableDesSymboles tds = TableDesSymboles.getInstance();
