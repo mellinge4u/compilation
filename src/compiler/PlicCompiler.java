@@ -38,9 +38,9 @@ public class PlicCompiler {
 		AnalyseurSyntaxique as = new AnalyseurSyntaxique(al);
 
 		AbstractTree tree = null;
-
+		Classe classe = null;
 		try {
-			tree = (AbstractTree) as.parse().value;
+			classe = (Classe) as.parse().value;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erreur : génération de l'arbre abstrait");
@@ -78,10 +78,11 @@ public class PlicCompiler {
 		String code = readFile(fileIn);
 		System.out.println(code);
 		System.out.println("Traduction en mips");
-		AbstractTree tree = compile(code);
+		//AbstractTree tree = compile(code);
+		Classe classe = (Classe) compile(code);
 		System.out.println("Ecriture du fichier destination");
-		System.out.println(tree.getSourceCode());
-		writeFile(tree, fileOut);
+		System.out.println(classe.getSourceCode());
+		writeFile(classe, fileOut);
 		// System.out.println(tree.getCompiledCode());
 	}
 }

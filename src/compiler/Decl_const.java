@@ -26,4 +26,13 @@ public class Decl_const extends Declaration {
 		return sb.toString();
 	}
 
+	@Override
+	public String getCompiledCode(Compteur i) {
+		StringBuilder sb = new StringBuilder();
+		for(Instruction ins : instructions){
+			sb.append(ins.getCompiledCode(i));
+		}
+		return sb.toString();
+	}
+
 }

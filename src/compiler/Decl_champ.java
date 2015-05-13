@@ -49,7 +49,7 @@ public class Decl_champ extends Declaration {
 		return sb.toString();
 	}
 
-	public String getCompiledCode(){
+	public String getCompiledCode(Compteur i){
 		StringBuilder sb = new StringBuilder();
 		int origin;
 		if (type == "entier") {		
@@ -61,4 +61,6 @@ public class Decl_champ extends Declaration {
 		sb.append("addi $sp, $sp " + origin);
 		return null;
 	}
+
+	
 }
