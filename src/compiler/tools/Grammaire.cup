@@ -139,8 +139,8 @@ DECLARATION		::= DECL_CHAMP
 				|	DECL_CONST
 				;
 				
-DECL_CHAMP		::= STATUS TYPE IDF L_IDF POINTVIRGULE
-						{: RESULT = new Decl_champ(); :}
+DECL_CHAMP		::= STATUS:s TYPE:t IDF:i L_IDF:li POINTVIRGULE
+						{: RESULT = new Decl_champ(s, t, i); RESULT.addListIdf(li); :}
 				;
 
 L_IDF			::= L_IDF:li VIRGULE IDF:i
