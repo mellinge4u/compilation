@@ -1,3 +1,1 @@
-classe Essai
-public entier a;
-fin
+classe Essai publique entier k ; k = 3 ; fin

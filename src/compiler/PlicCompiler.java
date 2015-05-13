@@ -83,6 +83,6 @@ public class PlicCompiler {
 		System.out.println("Ecriture du fichier destination");
 		System.out.println(tree.getSourceCode());
 		writeFile(tree, fileOut);
-		// System.out.println(tree.getCompiledCode());
+		// System.out.println(tree.getCompiledCode(new Compteur(0)));
 	}
 }

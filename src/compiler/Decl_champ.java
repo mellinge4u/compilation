@@ -13,15 +13,15 @@ public class Decl_champ extends Declaration {
 	protected static TableDesSymboles tds = TableDesSymboles.getInstance();
 
 	public Decl_champ(String status, String type, String idf) {
-		if (status == "publique") {
+		if (status.equals("publique")) {
 			this.status = Symbol.e_visibility.publique;
-		} else if (status == "privee") {
+		} else if (status.equals("privee")) {
 			this.status = Symbol.e_visibility.privee;
 		} else {
 			throw new DevlopperErrorException(
 					"Probleme avec Jflex et cup sur les status\n");
 		}
-
+		this.type = type;
 		tds.ajouter(idf, new Symbol(type, this.status));
 
 		idfs = new ArrayList<String>();
@@ -41,7 +41,7 @@ public class Decl_champ extends Declaration {
 		StringBuilder sb = new StringBuilder();
 		sb.append(status);
 		sb.append(" " + type);
-		sb.append(idfs.get(0));
+		sb.append(" " + idfs.get(0));
 		for (int i = 1; i < idfs.size(); i++) {
 			sb.append(", " + idfs.get(1));
 		}
@@ -52,7 +52,7 @@ public class Decl_champ extends Declaration {
 	public String getCompiledCode(Compteur i){
 		StringBuilder sb = new StringBuilder();
 		int origin;
-		if (type == "entier") {		
+		if (type.equals("entier")) {		
 			origin = -4;
 		} else {
 			throw new DevlopperErrorException("Problème avec le type d'une variable sur la génération du code Mips\n");
