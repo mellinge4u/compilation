@@ -13,7 +13,7 @@ public class Affect extends Instruction {
 	
 	public String getSourceCode() {
 		StringBuilder sb= new StringBuilder();
-		sb.append(idf + " = " + exp.getSourceCode());
+		sb.append(idf + " = " + exp.getSourceCode() + " ;");
 		return null;
 	}
 
