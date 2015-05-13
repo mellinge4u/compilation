@@ -9,6 +9,7 @@ import compiler.Decl_champ;
 import compiler.Decl_const;
 import compiler.Declaration;
 import compiler.Expression;
+import compiler.Variable;
 import compiler.instruct.Affect;
 import compiler.instruct.Ecrire;
 import compiler.instruct.EcrireChaine;
@@ -189,6 +190,8 @@ ECRIRE			::= SYMECRIRE EXP:e POINTVIRGULE
 			
 EXP				::= NOMBRE:n
 						{: RESULT = new Constante(n); :}
+				|	IDF:i
+						{: RESULT = new Variable(i); :}
 				|	PARO EXP:e PARF
 						{: RESULT = e; :}
 				|	OPMOINS EXP:e

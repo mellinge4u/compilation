@@ -62,7 +62,7 @@ public class Decl_champ extends Declaration {
 			throw new DevlopperErrorException("Problème avec le type d'une variable sur la génération du code Mips\n");
 		}
 		sb.append("#on reserve de la mémoire en empliantn\n");
-		sb.append("addi $sp, $sp " + origin + "\n");
+		sb.append("addi $sp, $sp ," + origin + "\n");
 		return sb.toString();
 	}
 
