@@ -1,0 +1,10 @@
+classe Essai
+// double declaration
+       publique entier a ;
+       privee entier a ;
+       privee entier b ;
+       a = 5 ;
+       ecrire a ;
+       b = a ;
+       ecrire b ;
+fin

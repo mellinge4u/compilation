@@ -1,0 +1,9 @@
+classe Essai
+// déclaration sans statut
+       privee entier a ;
+       entier b ;
+       a = 5 ;
+       ecrire a ;
+       b = a ;
+       ecrire b ;
+fin

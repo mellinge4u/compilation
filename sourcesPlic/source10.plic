@@ -1,0 +1,9 @@
+classe Essai
+     // portee de la declaration des variables
+     a = 1 ;
+     b = 2 ;
+     privee entier b, c ;
+     c = a ;
+     publique entier a ;
+     ecrire "fini\n" ;
+fin

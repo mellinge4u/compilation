@@ -1,0 +1,8 @@
+classe Essai
+       publique entier a ;
+       privee entier b ;
+       a = % ;  // caractère inconnu
+       ecrire a ;
+       b = a ;
+       ecrire b ;
+fin

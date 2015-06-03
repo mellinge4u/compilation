@@ -1,0 +1,7 @@
+classe Essai
+       privee entier a ;
+       privee entier b ;
+       a = 5 ;
+       b = 7 ;
+       ecrire (5 < 7) ;
+fin

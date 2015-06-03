@@ -1,0 +1,18 @@
+classe Essai 
+     // définition d'attributs
+     privee entier a, b, c, d ;
+     a = 1 ;
+     b
+     = 
+     3
+     ;
+     c=4;
+
+     d
+		=
+			5
+				// ;
+					;
+
+    ecrire "fini" ;
+fin

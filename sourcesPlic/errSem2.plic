@@ -1,0 +1,9 @@
+classe Essai
+       privee entier a ;
+       privee entier b ;
+       a = 5 ;
+       ecrire a ;
+       // variable non declaree
+       b = c ;
+       ecrire b ;
+fin

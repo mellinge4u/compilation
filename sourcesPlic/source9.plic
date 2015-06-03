@@ -1,0 +1,40 @@
+classe Essai
+       // La seule et unique classe de Plic1
+
+       publique entier a, b ;
+       a = 0 ;
+       b = a + 25 ;
+
+       privee entier c1, d2, de ;
+       privee entier A, unNomDidentificateurTresLongPourEmbeterLesCompilateursDuLangagePlic ;
+
+       ecrire "programme de test\n" ;
+
+       ecrire "\n\n" ;
+
+       ecrire a ; ecrire "\n" ;
+
+       // je calcule des // "expressions"
+
+       A = 0012 ; A = 0000012 + A ;
+
+       c1 = (a+10) * 12 * (-1) ; f = 5 ;
+
+       d2 = (a*3 - 3 + c1*f) ;
+
+       unNomDidentificateurTresLongPourEmbeterLesCompilateursDuLangagePlic = c1 ;
+
+       ecrire unNomDidentificateurTresLongPourEmbeterLesCompilateursDuLangagePlic ; ecrire"\n" ;
+
+       ecrire "ecriture d'un mot entre guillemets ""bonjour""" ;
+
+       ecrire "\n" ;
+
+       lire f ; lire Essai ;
+
+       publique entier f ;
+
+       Essai = 1 ;
+
+       publique entier Essai, essai ;
+       essai = 2*Essai ; fin

@@ -1,0 +1,7 @@
+classe Essai
+       publique entier a ;
+       publique entier b ;
+       a = 5 ;
+       b = a - a * 100 - 10 ;
+       ecrire b ;
+fin

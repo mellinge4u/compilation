@@ -1,0 +1,7 @@
+classe Essai
+       privee entier a ;
+       privee entier b ;
+       a = 5 ;
+       b = ( a - 1 ) - ( a - 1 ) + 100 ;
+       ecrire b ;
+fin

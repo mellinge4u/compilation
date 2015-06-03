@@ -1,0 +1,3 @@
+classe Essai
+       ecrire (1 == 6) + vrai ;
+fin

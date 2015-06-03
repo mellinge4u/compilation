@@ -1,0 +1,8 @@
+classe Essai
+       privee entier a ;
+       privee entier b ;
+       a = 5 ;
+       ecrire "a : " ; ecrire a ; ecrire "\n" ;
+       b = 7 ;
+       ecrire "b : " ; ecrire b ; ecrire "\n" ;
+fin

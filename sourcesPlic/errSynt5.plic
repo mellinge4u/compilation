@@ -1,0 +1,8 @@
+classe Essai
+       publique entier a ;
+       privee entier 2b ;   // identificateur mal formé
+       a = 4 ;
+       ecrire a ;
+       2b = a ;
+       ecrire 2b ;
+fin
