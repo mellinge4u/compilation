@@ -2,6 +2,8 @@ package compiler;
 
 import java.util.ArrayList;
 
+import compiler.tds.TableDesSymboles;
+
 public class Classe extends Systeme {
 
 	protected String idf;
@@ -10,6 +12,8 @@ public class Classe extends Systeme {
 	public Classe(String idf) {
 		this.idf = idf;
 		decls = new ArrayList<Declaration>();
+		TableDesSymboles tds = TableDesSymboles.getInstance();
+		tds.entreeBloc();
 	}
 
 	public void addDeclaration(Declaration decl) {
@@ -18,6 +22,11 @@ public class Classe extends Systeme {
 	
 	public void addListDecl(ArrayList<Declaration> listDecl) {
 		decls.addAll(listDecl);
+	}
+	
+	public void finClass() {
+		TableDesSymboles tds = TableDesSymboles.getInstance();
+		tds.sortieBloc();
 	}
 	
 	@Override

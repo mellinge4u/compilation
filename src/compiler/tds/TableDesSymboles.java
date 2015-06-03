@@ -92,7 +92,7 @@ public final class TableDesSymboles {
 	}
 
 	public Symbol identifier(String entree) {
-		Symbol ns = new Symbol(null);
+		Symbol ns = null;
 		try {
 			for (int i = 0; i < pile.size(); i++) {
 				if (pile.get(i).contains(entree)) {
@@ -104,5 +104,6 @@ public final class TableDesSymboles {
 		} catch (UndeclaredDeclarationException e) {
 
 		}
+		return ns;
 	}
 }

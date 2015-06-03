@@ -125,8 +125,8 @@ SYSTEME 		::= CLASSE:c
 						{: RESULT = c; :}
 				;
 		
-CLASSE			::= SYMCLASSE IDF:i L_DECL:ld FIN
-						{: RESULT = new Classe(i); RESULT.addListDecl(ld); :}
+CLASSE			::= SYMCLASSE IDF:i {: RESULT = new Classe(i); :} L_DECL:ld FIN
+						{: RESULT.addListDecl(ld); RESULT.finClass(); :}
 				;
 
 L_DECL			::= L_DECL:ld DECLARATION:d
