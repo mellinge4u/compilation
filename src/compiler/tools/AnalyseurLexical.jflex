@@ -30,7 +30,7 @@ import java_cup.runtime.*;
 %}
 
 %init{
-  nbLigne = 0 ;
+  nbLigne = 1 ;
 %init}
 
 classe			= classe
@@ -87,5 +87,6 @@ commentaire		= \/\/.*\n
 {csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
 {commentaire}	{}
 \n				{ nbLigne++;}
+\t				{}
 " "				{}
 . 				{ throw new LexicalErrorException(yytext(), nbLigne);}
