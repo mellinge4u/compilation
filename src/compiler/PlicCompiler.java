@@ -47,7 +47,7 @@ public class PlicCompiler {
 		try {
 			classe = (Classe) as.parse().value;
 		} catch (LexicalErrorException e) {
-			System.out.println("ERREUR LEXICALE : [n° ligne] : \""
+			System.out.println("ERREUR LEXICALE : " + e.getNbLigne() + " : \""
 					+ e.getMessage() + "\" non identifiée");
 		} catch (Exception e) {
 			e.printStackTrace();

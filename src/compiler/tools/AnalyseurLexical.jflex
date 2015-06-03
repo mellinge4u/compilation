@@ -19,6 +19,7 @@ import java_cup.runtime.*;
 %cup
    	
 %{
+  private int nbLigne;
   private Symbol symbol(int type) {
 	return new Symbol(type, yyline, yycolumn) ;
   }
@@ -27,6 +28,10 @@ import java_cup.runtime.*;
 	return new Symbol(type, yyline, yycolumn, value) ;
   }
 %}
+
+%init{
+  nbLigne = 0 ;
+%init}
 
 classe			= classe
 fin 			= fin
@@ -54,6 +59,7 @@ egal			= =
 virgule			= ,
 csteChaine		= \".*\"
 commentaire		= \/\/.*\n
+
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -80,6 +86,6 @@ commentaire		= \/\/.*\n
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
 {csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
 {commentaire}	{}
-\n				{}
+\n				{ nbLigne++;}
 " "				{}
-. 				{ throw new LexicalErrorException(yytext());}
+. 				{ throw new LexicalErrorException(yytext(), nbLigne);}
