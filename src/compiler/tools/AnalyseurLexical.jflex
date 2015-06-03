@@ -39,6 +39,8 @@ status			= publique|privee
 type			= entier
 lire			= lire
 ecrire			= ecrire
+vrai			= vrai
+faux			= faux
 
 lettre			= [a-zA-Z]
 chiffre 		= [0-9]
@@ -81,6 +83,8 @@ commentaire		= \/\/.*\n
 {type}			{ return symbol(CodesLexicaux.TYPE, yytext());}
 {lire}			{ return symbol(CodesLexicaux.SYMLIRE);}
 {ecrire}		{ return symbol(CodesLexicaux.SYMECRIRE);}
+{vrai}  		{ return symbol(CodesLexicaux.NOMBRE, "1");}
+{faux}  		{ return symbol(CodesLexicaux.NOMBRE, "0");}
 {egal}			{ return symbol(CodesLexicaux.EGAL);}
 {virgule}		{ return symbol(CodesLexicaux.VIRGULE);}
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
