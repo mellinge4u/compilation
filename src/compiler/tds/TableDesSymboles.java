@@ -1,6 +1,8 @@
 package compiler.tds;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 import compiler.exception.DoubleDeclarationException;
 import compiler.exception.UndeclaredDeclarationException;
@@ -13,77 +15,94 @@ import compiler.exception.UndeclaredDeclarationException;
 
 public final class TableDesSymboles {
 
-	private HashMap<String, Symbol> dictionnaire;
-	private int adDmemoire;
-	
+	private Stack<DictionnaireLocal> pile;
+	private ArrayList<DictionnaireLocal> liste;
+	private int numeroBloc;
+
 	private static volatile TableDesSymboles instance = null;
-	
-	private TableDesSymboles(){
-		dictionnaire = new HashMap<>();
-		adDmemoire = 0;
+
+	private TableDesSymboles() {
+		pile = new Stack<>();
+		liste = new ArrayList<>();
 	}
 
-	 /**
-     * Méthode permettant de renvoyer une instance de la classe Singleton
-     * @return Retourne l'instance du singleton.
-     */
-    public final static TableDesSymboles getInstance() {
-        //Le "Double-Checked Singleton"/"Singleton doublement vérifié" permet 
-        //d'éviter un appel coûteux à synchronized, 
-        //une fois que l'instanciation est faite.
-        if (TableDesSymboles.instance == null) {
-           // Le mot-clé synchronized sur ce bloc empêche toute instanciation
-           // multiple même par différents "threads".
-           // Il est TRES important.
-           synchronized(TableDesSymboles.class) {
-             if (TableDesSymboles.instance == null) {
-               TableDesSymboles.instance = new TableDesSymboles();
-             }
-           }
-        }
-        return TableDesSymboles.instance;
-    }
-	
-	public HashMap<String, Symbol> getDictionnaire() {
-		return dictionnaire;
+	/**
+	 * Méthode permettant de renvoyer une instance de la classe Singleton
+	 * 
+	 * @return Retourne l'instance du singleton.
+	 */
+	public final static TableDesSymboles getInstance() {
+		// Le "Double-Checked Singleton"/"Singleton doublement vérifié" permet
+		// d'éviter un appel coûteux à synchronized,
+		// une fois que l'instanciation est faite.
+		if (TableDesSymboles.instance == null) {
+			// Le mot-clé synchronized sur ce bloc empêche toute instanciation
+			// multiple même par différents "threads".
+			// Il est TRES important.
+			synchronized (TableDesSymboles.class) {
+				if (TableDesSymboles.instance == null) {
+					TableDesSymboles.instance = new TableDesSymboles();
+				}
+			}
+		}
+		return TableDesSymboles.instance;
 	}
 
-	public void setDictionnaire(HashMap<String, Symbol> dictionnaire) {
-		this.dictionnaire = dictionnaire;
-	}
-	
-	public int getAdDmemoire() {
-		return adDmemoire;
+	public Stack<DictionnaireLocal> getPile() {
+		return pile;
 	}
 
-	public void setAdDmemoire(int adDmemoire) {
-		this.adDmemoire = adDmemoire;
+	public void setPile(Stack<DictionnaireLocal> pile) {
+		this.pile = pile;
 	}
 
-	public boolean existeDeja(String s){
-		return dictionnaire.containsKey(s);
+	public ArrayList<DictionnaireLocal> getListe() {
+		return liste;
 	}
-	
-	public void ajouter(String entree, Symbol s){
-		if(existeDeja(entree)){
-			throw new DoubleDeclarationException(entree);
-		} else {
-			s.setOrigine(adDmemoire);
-			adDmemoire -= 4;
-			dictionnaire.put(entree, s);
+
+	public void setListe(ArrayList<DictionnaireLocal> liste) {
+		this.liste = liste;
+	}
+
+	public int getNumeroBloc() {
+		return numeroBloc;
+	}
+
+	public void setNumeroBloc(int numeroBloc) {
+		this.numeroBloc = numeroBloc;
+	}
+
+	/**
+	 * fonctions propres à la gestions des blocs
+	 */
+	public void entreeBloc() {
+		numeroBloc++;
+		DictionnaireLocal dl = new DictionnaireLocal();
+		pile.push(dl);
+		liste.add(dl);
+	}
+
+	public void ajouter(String entree, Symbol s) {
+		DictionnaireLocal DLcourant = pile.firstElement();
+		DLcourant.ajouter(entree, s);
+	}
+
+	public void sortieBloc() {
+		pile.pop();
+	}
+
+	public Symbol identifier(String entree) {
+		Symbol ns = new Symbol(null);
+		try {
+			for (int i = 0; i < pile.size(); i++) {
+				if (pile.get(i).contains(entree)) {
+					ns = pile.get(i).getDictionnaire().get(entree);
+					break;
+				}
+			}
+			return ns;
+		} catch (UndeclaredDeclarationException e) {
+
 		}
 	}
-	
-	public Symbol identifier(String entree){
-		Symbol s;
-		if(!existeDeja(entree)){
-			throw new UndeclaredDeclarationException(entree);
-		} else {
-			s = new Symbol(dictionnaire.get(entree));
-		}
-		
-		return s;
-		
-	}
-	
 }

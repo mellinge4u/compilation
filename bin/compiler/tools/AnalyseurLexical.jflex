@@ -1,5 +1,6 @@
 package compiler.tools ;
 
+import compiler.exception.LexicalErrorException;
 import java_cup.runtime.*;
       
 %%
@@ -18,6 +19,7 @@ import java_cup.runtime.*;
 %cup
    	
 %{
+  private int nbLigne;
   private Symbol symbol(int type) {
 	return new Symbol(type, yyline, yycolumn) ;
   }
@@ -27,12 +29,18 @@ import java_cup.runtime.*;
   }
 %}
 
+%init{
+  nbLigne = 1 ;
+%init}
+
 classe			= classe
 fin 			= fin
 status			= publique|privee
 type			= entier
 lire			= lire
 ecrire			= ecrire
+vrai			= vrai
+faux			= faux
 
 lettre			= [a-zA-Z]
 chiffre 		= [0-9]
@@ -53,6 +61,7 @@ egal			= =
 virgule			= ,
 csteChaine		= \".*\"
 commentaire		= \/\/.*\n
+
 %%
 
 ";"				{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -74,11 +83,14 @@ commentaire		= \/\/.*\n
 {type}			{ return symbol(CodesLexicaux.TYPE, yytext());}
 {lire}			{ return symbol(CodesLexicaux.SYMLIRE);}
 {ecrire}		{ return symbol(CodesLexicaux.SYMECRIRE);}
+{vrai}  		{ return symbol(CodesLexicaux.NOMBRE, "1");}
+{faux}  		{ return symbol(CodesLexicaux.NOMBRE, "0");}
 {egal}			{ return symbol(CodesLexicaux.EGAL);}
 {virgule}		{ return symbol(CodesLexicaux.VIRGULE);}
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
 {csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
 {commentaire}	{}
-. 				{}
-\n				{}
+\n				{ nbLigne++;}
+\t				{}
 " "				{}
+. 				{ throw new LexicalErrorException(yytext(), nbLigne);}
