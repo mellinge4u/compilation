@@ -27,8 +27,9 @@ public class Affect extends Instruction {
 		TableDesSymboles tds = TableDesSymboles.getInstance();
 		Symbol sym = tds.identifier(idf);
 		int ad = sym.getOrigine();
+		sb.append("#affectation de " + exp.getSourceCode() + " dans $v0\n");
 		sb.append(exp.getCompiledCode(i));
-		sb.append("#affectation de " + exp.getSourceCode() + " dans la variable " + idf + "\n");
+		sb.append("#affectation de $v0 dans la variable " + idf + "\n");
 		sb.append("sw $v0, " + ad + "($s7)\n");
 		return sb.toString();
 	}

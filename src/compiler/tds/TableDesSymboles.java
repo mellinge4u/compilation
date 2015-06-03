@@ -75,7 +75,7 @@ public final class TableDesSymboles {
 	}
 	
 	public Symbol identifier(String entree){
-		Symbol s;
+		Symbol s = null;
 		if(!existeDeja(entree)){
 			throw new UndeclaredDeclarationException(entree);
 		} else {
