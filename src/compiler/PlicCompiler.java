@@ -50,7 +50,7 @@ public class PlicCompiler {
 			System.out.println("Erreur : génération de l'arbre abstrait");
 			System.exit(1);
 		}
-
+		System.out.println("COMPILATION OK");
 		return classe;
 	}
 

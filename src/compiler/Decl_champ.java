@@ -2,6 +2,7 @@ package compiler;
 
 import java.util.ArrayList;
 
+import compiler.exception.DevlopperErrorException;
 import compiler.tds.Symbol;
 import compiler.tds.TableDesSymboles;
 
