@@ -1,5 +1,6 @@
 package compiler.tools ;
 
+import compiler.exception.LexicalErrorException;
 import java_cup.runtime.*;
       
 %%
@@ -79,6 +80,6 @@ commentaire		= \/\/.*\n
 {idf}			{ return symbol(CodesLexicaux.IDF, yytext());}
 {csteChaine}	{ return symbol(CodesLexicaux.CSTECHAINE, yytext());}
 {commentaire}	{}
-. 				{}
 \n				{}
 " "				{}
+. 				{ throw new LexicalErrorException(yytext());}

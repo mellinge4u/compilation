@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 
+import compiler.exception.LexicalErrorException;
 import compiler.tools.AnalyseurLexical;
 import compiler.tools.AnalyseurSyntaxique;
 
@@ -45,6 +46,9 @@ public class PlicCompiler {
 		Classe classe = null;
 		try {
 			classe = (Classe) as.parse().value;
+		} catch (LexicalErrorException e) {
+			System.out.println("ERREUR LEXICALE : [n° ligne] : \""
+					+ e.getMessage() + "\" non identifiée");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erreur : génération de l'arbre abstrait");
@@ -67,9 +71,9 @@ public class PlicCompiler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		String fileIn = null;
 		String fileOut = null;
@@ -77,7 +81,8 @@ public class PlicCompiler {
 			fileIn = args[0];
 			fileOut = args[1];
 		} else {
-			System.out.println("Erreur : Il n'y a pas le bon nombre d'arguments");
+			System.out
+					.println("Erreur : Il n'y a pas le bon nombre d'arguments");
 			System.out.println("ex : plic source.plic destination.asm");
 			System.exit(-1);
 		}
