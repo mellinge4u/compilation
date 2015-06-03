@@ -1,4 +1,4 @@
-package compiler;
+package compiler.exception;
 
 public class DevlopperErrorException extends RuntimeException {
 
