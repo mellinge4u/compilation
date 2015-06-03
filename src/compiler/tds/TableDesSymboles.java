@@ -2,6 +2,9 @@ package compiler.tds;
 
 import java.util.HashMap;
 
+import compiler.exception.DoubleDeclarationException;
+import compiler.exception.UndeclaredDeclarationException;
+
 /*
  * Classe rendu singleton
  * Table des symboles pour les classes à un seul bloc
@@ -63,7 +66,7 @@ public final class TableDesSymboles {
 	
 	public void ajouter(String entree, Symbol s){
 		if(existeDeja(entree)){
-			throw new DoubleDeclarationException();
+			throw new DoubleDeclarationException(entree);
 		} else {
 			s.setOrigine(adDmemoire);
 			adDmemoire -= 4;
@@ -74,7 +77,7 @@ public final class TableDesSymboles {
 	public Symbol identifier(String entree){
 		Symbol s;
 		if(!existeDeja(entree)){
-			throw new UndeclaredDeclarationException();
+			throw new UndeclaredDeclarationException(entree);
 		} else {
 			s = new Symbol(dictionnaire.get(entree));
 		}

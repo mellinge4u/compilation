@@ -3,6 +3,7 @@ package compiler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +11,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 
+import compiler.exception.DoubleDeclarationException;
 import compiler.exception.LexicalErrorException;
+import compiler.exception.UndeclaredDeclarationException;
 import compiler.tools.AnalyseurLexical;
 import compiler.tools.AnalyseurSyntaxique;
 
@@ -29,9 +32,12 @@ public class PlicCompiler {
 				line = d.readLine();
 			}
 			d.close();
+		} catch (FileNotFoundException e) {
+			System.err.println("ERREUR : " + e.getMessage());
+			System.exit(1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Erreur : Lecture du fichier");
+			System.err.println("ERREUR : Lecture du fichier");
 			System.exit(1);
 		}
 		return code.toString();
@@ -47,14 +53,18 @@ public class PlicCompiler {
 		try {
 			classe = (Classe) as.parse().value;
 		} catch (LexicalErrorException e) {
-			System.out.println("ERREUR LEXICALE : " + e.getNbLigne() + " : \""
+			System.err.println("ERREUR LEXICALE : " + e.getNbLigne() + " : \""
 					+ e.getMessage() + "\" non identifiée");
+			System.exit(1);
+		} catch (DoubleDeclarationException e) {
+			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+					+ e.getMessage() + "\" deja déclarée");
+			System.exit(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erreur : génération de l'arbre abstrait");
 			System.exit(1);
 		}
-		System.out.println("COMPILATION OK");
 		return classe;
 	}
 
@@ -68,6 +78,10 @@ public class PlicCompiler {
 			fw.write(finalCode);
 			fileFlux.close();
 			fw.close();
+		} catch (UndeclaredDeclarationException e) {
+			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+					+ e.getMessage() + "\" non déclarée");
+			System.exit(1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -90,5 +104,6 @@ public class PlicCompiler {
 		AbstractTree tree = compile(code);
 		tree.getSourceCode();
 		writeFile(tree, fileOut);
+		System.out.println("COMPILATION OK");
 	}
 }
