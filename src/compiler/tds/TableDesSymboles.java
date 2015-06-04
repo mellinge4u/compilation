@@ -101,7 +101,6 @@ public final class TableDesSymboles {
 		boolean find = false;
 		int nba = index; // num du block analysé
 
-		
 		while (!find && nba != -1) {
 			if (liste.get(nba).contains(entree)) {
 				ns = liste.get(nba).getDictionnaire().get(entree);
@@ -110,7 +109,7 @@ public final class TableDesSymboles {
 				nba = liste.get(nba).getNumBlockPrec();
 			}
 		}
-		if(find = false){
+		if(find == false){
 			throw new UndeclaredDeclarationException(entree);
 		}
 		return ns;

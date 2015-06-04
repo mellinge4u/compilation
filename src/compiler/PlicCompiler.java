@@ -77,8 +77,6 @@ public class PlicCompiler {
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
-			System.err.println("Erreur programme : " + e.getMessage());
 		}
 
 	}
