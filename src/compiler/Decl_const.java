@@ -16,6 +16,7 @@ public class Decl_const extends Declaration {
 		} catch (UndeclaredDeclarationException e) {
 			System.err.println("ERREUR SEMANTIQUE : ??? : \""
 					+ e.getMessage() + "\" non déclarée");
+			// TODO Changer le numero de ligne
 		}
 	}
 	
@@ -25,6 +26,7 @@ public class Decl_const extends Declaration {
 		} catch (UndeclaredDeclarationException e) {
 			System.err.println("ERREUR SEMANTIQUE : ??? : \""
 					+ e.getMessage() + "\" non déclarée");
+			// TODO Changer le numero de ligne
 		}
 	}
 
@@ -46,6 +48,7 @@ public class Decl_const extends Declaration {
 			} catch (UndeclaredDeclarationException e) {
 				System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
 						+ e.getMessage() + "\" non déclarée");
+				// TODO Changer le numero de ligne
 			}
 		}
 		return sb.toString();

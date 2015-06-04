@@ -34,6 +34,7 @@ public class Decl_champ extends Declaration {
 		} catch (DoubleDeclarationException e) {
 			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
 					+ e.getMessage() + "\" deja déclarée");
+			// TODO Changer le numero de ligne
 			doubleDecl = true;
 		}
 
@@ -47,6 +48,7 @@ public class Decl_champ extends Declaration {
 		} catch (DoubleDeclarationException e) {
 			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
 					+ e.getMessage() + "\" deja déclarée");
+			// TODO Changer le numero de ligne
 			doubleDecl = true;
 		}
 		idfs.add(idf);
@@ -59,6 +61,7 @@ public class Decl_champ extends Declaration {
 			} catch (DoubleDeclarationException e) {
 				System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
 						+ e.getMessage() + "\" deja déclarée");
+				// TODO Changer le numero de ligne
 				doubleDecl = true;
 			}
 		}

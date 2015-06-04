@@ -19,6 +19,7 @@ public class Affect extends Instruction {
 		} catch (UndeclaredDeclarationException e) {
 			System.err.println("ERREUR SEMANTIQUE : ??? : \"" + e.getMessage()
 					+ "\" non déclarée");
+			// TODO Changer le numero de ligne
 		}
 	}
 

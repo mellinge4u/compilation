@@ -43,6 +43,7 @@ public class Variable extends Expression {
 			sb.append("# ERR : L'identificateur " + idf + " n'est pas déclarée");
 			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \"" + idf
 					+ "\" non déclarée");
+			// TODO Changer le numero de ligne
 		}
 
 		return sb.toString();

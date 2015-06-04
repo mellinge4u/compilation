@@ -54,7 +54,7 @@ public class Classe extends Systeme {
 		sb.append("#Fin du programme \n");
 		sb.append("li $v0 , 5\n");
 		sb.append("syscall #retour au systeme\n");
-		sb.insert(0,Data.getInstance().getData()+"\n");// le .data
+		sb.insert(0,Data.getInstance().getData()+"\n");
 		sb.insert(0,"# Class "+idf+"\n");
 		return sb.toString();
 	}

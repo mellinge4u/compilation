@@ -1,10 +1,9 @@
 package compiler;
 
-
 public class Constante extends Expression {
 
 	protected int cst;
-	
+
 	public Constante(String value) {
 		cst = Integer.parseInt(value);
 	}
@@ -21,11 +20,12 @@ public class Constante extends Expression {
 		return "" + cst;
 	}
 
-	public String getCompiledCode(Compteur i){
+	public String getCompiledCode(Compteur i) {
 		StringBuilder sb = new StringBuilder();
-		//sb.append("/*Code cible qui évalue la constant et la stocke dans $v0 */");
-		sb.append("li $v0, "+cst+"\n");
+		sb.append("#Code cible qui stock la constant " + cst
+				+ " et la stocke dans $v0");
+		sb.append("li $v0, " + cst + "\n");
 		return sb.toString();
 	}
-	
+
 }
