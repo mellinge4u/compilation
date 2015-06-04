@@ -11,11 +11,21 @@ public class Decl_const extends Declaration {
 	
 	public Decl_const(Instruction inst) {
 		instructions = new ArrayList<Instruction>();
-		instructions.add(inst);
+		try {
+			instructions.add(inst);
+		} catch (UndeclaredDeclarationException e) {
+			System.err.println("ERREUR SEMANTIQUE : ??? : \""
+					+ e.getMessage() + "\" non déclarée");
+		}
 	}
 	
 	public void addInstruction(Instruction inst) {
-		instructions.add(inst);
+		try {
+			instructions.add(inst);
+		} catch (UndeclaredDeclarationException e) {
+			System.err.println("ERREUR SEMANTIQUE : ??? : \""
+					+ e.getMessage() + "\" non déclarée");
+		}
 	}
 
 	@Override

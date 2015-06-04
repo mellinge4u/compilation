@@ -12,6 +12,10 @@ public class Variable extends Expression {
 	public Variable(String idf) {
 		this.idf = idf;
 		this.bloc = TableDesSymboles.getInstance().getNumeroBloc();
+		TableDesSymboles tds = TableDesSymboles.getInstance();
+		if (tds.identifier(idf, bloc) == null) {
+			throw new UndeclaredDeclarationException(idf);
+		}
 	}
 
 	public String getIdf() {
