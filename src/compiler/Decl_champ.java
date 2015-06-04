@@ -3,6 +3,7 @@ package compiler;
 import java.util.ArrayList;
 
 import compiler.exception.DevlopperErrorException;
+import compiler.exception.DoubleDeclarationException;
 import compiler.tds.Symbol;
 import compiler.tds.TableDesSymboles;
 
@@ -11,9 +12,13 @@ public class Decl_champ extends Declaration {
 	protected Symbol.e_visibility status;
 	protected String type;
 	protected ArrayList<String> idfs;
+	protected int bloc;
 	protected static TableDesSymboles tds = TableDesSymboles.getInstance();
-
+	protected Boolean doubleDecl;
+	
 	public Decl_champ(String status, String type, String idf) {
+		bloc = tds.getNumeroBloc();
+		doubleDecl = false;
 		if (status.equals("publique")) {
 			this.status = Symbol.e_visibility.publique;
 		} else if (status.equals("privee")) {
@@ -23,20 +28,39 @@ public class Decl_champ extends Declaration {
 					"Probleme avec Jflex et cup sur les status\n");
 		}
 		this.type = type;
-		tds.ajouter(idf, new Symbol(type, this.status));
+
+		try {
+			tds.ajouter(idf, new Symbol(type, this.status));
+		} catch (DoubleDeclarationException e) {
+			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+					+ e.getMessage() + "\" deja déclarée");
+			doubleDecl = true;
+		}
 
 		idfs = new ArrayList<String>();
 		idfs.add(idf);
 	}
 
 	public void addIdf(String idf) {
-		tds.ajouter(idf, new Symbol(type, this.status));
+		try {
+			tds.ajouter(idf, new Symbol(type, this.status));
+		} catch (DoubleDeclarationException e) {
+			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+					+ e.getMessage() + "\" deja déclarée");
+			doubleDecl = true;
+		}
 		idfs.add(idf);
 	}
 
 	public void addListIdf(ArrayList<String> idfs) {
 		for (String idf : idfs) {
-			tds.ajouter(idf, new Symbol(type, this.status));
+			try {
+				tds.ajouter(idf, new Symbol(type, this.status));
+			} catch (DoubleDeclarationException e) {
+				System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+						+ e.getMessage() + "\" deja déclarée");
+				doubleDecl = true;
+			}
 		}
 		this.idfs.addAll(idfs);
 	}
@@ -54,18 +78,21 @@ public class Decl_champ extends Declaration {
 		return sb.toString();
 	}
 
-	public String getCompiledCode(Compteur i){
+	public String getCompiledCode(Compteur i) {
 		StringBuilder sb = new StringBuilder();
+		TableDesSymboles tds = TableDesSymboles.getInstance();
 		int origin;
-		if (type.equals("entier")) {		
-			origin = -4;
-		} else {
-			throw new DevlopperErrorException("Problème avec le type d'une variable sur la génération du code Mips\n");
+		for (String idf : idfs) {
+			sb.append("#on reserve de la mémoire pour " + idf + " en empliant\n");
+			if (!doubleDecl) {
+				origin = tds.identifier(idf, bloc).getOrigine();
+				sb.append("addi $sp, $sp ," + origin + "\n");
+			} else {
+				sb.append("\t# La variable " + idf + " a déja été déclarée,\n");
+				sb.append("\t#   et sa mémoire est déja réservée\n");
+			}
 		}
-		sb.append("#on reserve de la mémoire en empliantn\n");
-		sb.append("addi $sp, $sp ," + origin + "\n");
 		return sb.toString();
 	}
 
-	
 }

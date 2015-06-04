@@ -57,10 +57,6 @@ public class PlicCompiler {
 			System.err.println("ERREUR LEXICALE : " + e.getNbLigne() + " : \""
 					+ e.getMessage() + "\" non identifiée");
 			System.exit(1);
-		} catch (DoubleDeclarationException e) {
-			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
-					+ e.getMessage() + "\" deja déclarée");
-			System.exit(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erreur : génération de l'arbre abstrait");
@@ -79,10 +75,6 @@ public class PlicCompiler {
 			fw.write(finalCode);
 			fileFlux.close();
 			fw.close();
-		} catch (UndeclaredDeclarationException e) {
-			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
-					+ e.getMessage() + "\" non déclarée");
-			System.exit(1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
