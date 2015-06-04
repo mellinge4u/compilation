@@ -76,8 +76,14 @@ public final class TableDesSymboles {
 	 * fonctions propres à la gestions des blocs
 	 */
 	public void entreeBloc() {
-		numeroBloc++;
 		DictionnaireLocal dl = new DictionnaireLocal();
+		if (numeroBloc == -1) {
+			dl.setNumBlockPrec(-1);
+		} else {
+			dl.setNumBlockPrec(pile.peek().getNumBlock());
+		}
+		numeroBloc++;
+		dl.setNumBlock(numeroBloc);
 		pile.push(dl);
 		liste.add(dl);
 	}
@@ -91,18 +97,22 @@ public final class TableDesSymboles {
 		pile.pop();
 	}
 
-	public Symbol identifier(String entree) {
+	public Symbol identifier(String entree, int index) {
 		Symbol ns = null;
-		try {
-			for (int i = 0; i < pile.size(); i++) {
-				if (pile.get(i).contains(entree)) {
-					ns = pile.get(i).getDictionnaire().get(entree);
-					break;
-				}
-			}
-			return ns;
-		} catch (UndeclaredDeclarationException e) {
+		boolean find = false;
+		int nba = index; // num du block analysé
 
+		
+		while (!find && nba != -1) {
+			if (liste.get(nba).contains(entree)) {
+				ns = liste.get(nba).getDictionnaire().get(entree);
+				find = true;
+			} else {
+				nba = liste.get(nba).getNumBlockPrec();
+			}
+		}
+		if(find = false){
+			throw new UndeclaredDeclarationException(entree);
 		}
 		return ns;
 	}

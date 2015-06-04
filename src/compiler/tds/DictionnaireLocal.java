@@ -9,6 +9,7 @@ public class DictionnaireLocal {
 
 	private HashMap<String, Symbol> dictionnaire;
 	private int adDmemoire;
+	private int numBlock;
 	private int numBlockPrec; //numéro de block du prédécesseur 
 	
 	public DictionnaireLocal(){
@@ -32,6 +33,14 @@ public class DictionnaireLocal {
 		this.adDmemoire = adDmemoire;
 	}
 	
+	public int getNumBlock() {
+		return numBlock;
+	}
+
+	public void setNumBlock(int numBlock) {
+		this.numBlock = numBlock;
+	}
+
 	public int getNumBlockPrec() {
 		return numBlockPrec;
 	}
