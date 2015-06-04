@@ -83,19 +83,20 @@ public class PlicCompiler {
 
 	public static void main(String[] args) {
 		String fileIn = null;
-		String fileOut = null;
-		if (args.length == 2) {
+		StringBuilder fileOut = null;
+		if (args.length >= 1) {
 			fileIn = args[0];
-			fileOut = args[1];
 		} else {
 			System.out
 					.println("Erreur : Il n'y a pas le bon nombre d'arguments");
 			System.out.println("ex : plic source.plic destination.asm");
 			System.exit(-1);
 		}
+		fileOut = new StringBuilder(fileIn.substring(0, fileIn.length()-4));
+		fileOut.append("ams");
 		String code = readFile(fileIn);
 		AbstractTree tree = compile(code);
-		writeFile(tree, fileOut);
+		writeFile(tree, fileOut.toString());
 		System.out.println("COMPILATION OK");
 	}
 }
