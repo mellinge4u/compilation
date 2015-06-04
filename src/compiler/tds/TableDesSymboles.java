@@ -1,10 +1,8 @@
 package compiler.tds;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Stack;
 
-import compiler.exception.DoubleDeclarationException;
 import compiler.exception.UndeclaredDeclarationException;
 
 /*
@@ -22,6 +20,7 @@ public final class TableDesSymboles {
 	private static volatile TableDesSymboles instance = null;
 
 	private TableDesSymboles() {
+		numeroBloc = -1;
 		pile = new Stack<>();
 		liste = new ArrayList<>();
 	}

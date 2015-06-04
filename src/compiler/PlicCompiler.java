@@ -14,6 +14,7 @@ import java.io.StringReader;
 import compiler.exception.DoubleDeclarationException;
 import compiler.exception.LexicalErrorException;
 import compiler.exception.UndeclaredDeclarationException;
+import compiler.tds.TableDesSymboles;
 import compiler.tools.AnalyseurLexical;
 import compiler.tools.AnalyseurSyntaxique;
 
@@ -84,6 +85,8 @@ public class PlicCompiler {
 			System.exit(1);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println("Erreur programme : " + e.getMessage());
 		}
 
 	}
@@ -102,7 +105,6 @@ public class PlicCompiler {
 		}
 		String code = readFile(fileIn);
 		AbstractTree tree = compile(code);
-		tree.getSourceCode();
 		writeFile(tree, fileOut);
 		System.out.println("COMPILATION OK");
 	}

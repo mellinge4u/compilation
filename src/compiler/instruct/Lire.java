@@ -2,28 +2,29 @@ package compiler.instruct;
 
 import compiler.Compteur;
 import compiler.Data;
+import compiler.Variable;
 import compiler.tds.Symbol;
 import compiler.tds.TableDesSymboles;
 
 public class Lire extends Instruction {
 
-	protected String idf;
+	protected Variable var;
 	protected TableDesSymboles tds;
 
 	public Lire(String idf){
-		this.idf = idf;
+		this.var = new Variable(idf);
 	}
 	
 	@Override
 	public String getSourceCode() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("lire " + idf + ";\n");
+		sb.append("lire " + var + ";\n");
 		return sb.toString();
 	} 
 	
 	public String getCompiledCode(Compteur i){
 		//Data.getInstance().append("lus"+i.getValue()+": .space 256");
-		Symbol s = TableDesSymboles.getInstance().identifier(idf);
+		Symbol s = TableDesSymboles.getInstance().identifier(var.getIdf(), var.getBloc());
 		int adDm = s.getOrigine();
 		StringBuilder sb = new StringBuilder();
 		sb.append("# Lire une chaine de caractères\n"

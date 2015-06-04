@@ -25,7 +25,7 @@ public class Affect extends Instruction {
 	public String getCompiledCode(Compteur i) {
 		StringBuilder sb = new StringBuilder();
 		TableDesSymboles tds = TableDesSymboles.getInstance();
-		Symbol sym = tds.identifier(idf);
+		Symbol sym = tds.identifier(idf, tds.getNumeroBloc());
 		int ad = sym.getOrigine();
 		sb.append(exp.getCompiledCode(i));
 		sb.append("#affectation de " + exp.getSourceCode() + " dans la variable " + idf + "\n");
