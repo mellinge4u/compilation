@@ -41,7 +41,7 @@ public class Variable extends Expression {
 			sb.append("lw $v0, " + ad + "($s7)\n");
 		} catch (UndeclaredDeclarationException e) {
 			sb.append("# ERR : L'identificateur " + idf + " n'est pas déclarée");
-			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \"" + idf
+			System.err.println("ERREUR SEMANTIQUE : . : \"" + idf
 					+ "\" non déclarée");
 			// TODO Changer le numero de ligne
 		}

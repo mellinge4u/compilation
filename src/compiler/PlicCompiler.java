@@ -11,10 +11,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 
-import compiler.exception.DoubleDeclarationException;
 import compiler.exception.LexicalErrorException;
-import compiler.exception.UndeclaredDeclarationException;
-import compiler.tds.TableDesSymboles;
 import compiler.tools.AnalyseurLexical;
 import compiler.tools.AnalyseurSyntaxique;
 
@@ -49,8 +46,7 @@ public class PlicCompiler {
 		AnalyseurLexical al = new AnalyseurLexical(sr);
 		AnalyseurSyntaxique as = new AnalyseurSyntaxique(al);
 
-		AbstractTree tree = null;
-		Classe classe = null;
+		AbstractTree classe = null;
 		try {
 			classe = (Classe) as.parse().value;
 		} catch (LexicalErrorException e) {
@@ -67,6 +63,7 @@ public class PlicCompiler {
 
 	public static void writeFile(AbstractTree tree, String fileName) {
 		try {
+
 			String finalCode = tree.getCompiledCode(new Compteur(0));
 			File file = new File(fileName);
 			file.createNewFile();
@@ -87,9 +84,9 @@ public class PlicCompiler {
 		if (args.length >= 1) {
 			fileIn = args[0];
 		} else {
-			System.out
-					.println("Erreur : Il n'y a pas le bon nombre d'arguments");
-			System.out.println("ex : plic source.plic destination.asm");
+			System.err
+					.println("ERREUR : Il n'y a pas le bon nombre d'arguments");
+			System.out.println("ex : plic source.plic nom_classe");
 			System.exit(-1);
 		}
 		fileOut = new StringBuilder(fileIn.substring(0, fileIn.length()-4));

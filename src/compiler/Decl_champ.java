@@ -32,7 +32,7 @@ public class Decl_champ extends Declaration {
 		try {
 			tds.ajouter(idf, new Symbol(type, this.status));
 		} catch (DoubleDeclarationException e) {
-			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+			System.err.println("ERREUR SEMANTIQUE : . : \""
 					+ e.getMessage() + "\" deja déclarée");
 			// TODO Changer le numero de ligne
 			doubleDecl = true;
@@ -46,7 +46,7 @@ public class Decl_champ extends Declaration {
 		try {
 			tds.ajouter(idf, new Symbol(type, this.status));
 		} catch (DoubleDeclarationException e) {
-			System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+			System.err.println("ERREUR SEMANTIQUE : . : \""
 					+ e.getMessage() + "\" deja déclarée");
 			// TODO Changer le numero de ligne
 			doubleDecl = true;
@@ -59,7 +59,7 @@ public class Decl_champ extends Declaration {
 			try {
 				tds.ajouter(idf, new Symbol(type, this.status));
 			} catch (DoubleDeclarationException e) {
-				System.err.println("ERREUR SEMANTIQUE : [n°ligne] : \""
+				System.err.println("ERREUR SEMANTIQUE : . : \""
 						+ e.getMessage() + "\" deja déclarée");
 				// TODO Changer le numero de ligne
 				doubleDecl = true;

@@ -1,7 +1,6 @@
 package compiler.instruct;
 
 import compiler.Compteur;
-import compiler.Data;
 import compiler.Variable;
 import compiler.tds.Symbol;
 import compiler.tds.TableDesSymboles;
