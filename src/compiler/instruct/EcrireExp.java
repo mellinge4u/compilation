@@ -26,7 +26,7 @@ public class EcrireExp extends Ecrire {
 				+ "sw $v0, ($sp)\n"
 				+ "addi $sp, $sp, -4\n"
 				+ "li $v0 , 1 # $v0 <- code du print \n"
-				+ "lw $t8, 4($sp) 	# $a0 <- adresse de la chaîne à écrire\n"
+				+ "lw $a0, 4($sp) 	# $a0 <- adresse de la chaîne à écrire\n"
 				+ "syscall 	# afficher\n"
 				+ "addi $sp, $sp, 4");
 		return sb.toString();
