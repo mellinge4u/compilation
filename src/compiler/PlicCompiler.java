@@ -93,7 +93,7 @@ public class PlicCompiler {
 		fileOut.append("ams");
 		String code = readFile(fileIn);
 		AbstractTree tree = compile(code);
-		writeFile(tree, "tmp/" + fileOut.toString());
+		writeFile(tree, fileOut.toString());
 		System.out.println("COMPILATION OK");
 	}
 }
