@@ -1,0 +1,22 @@
+# Class Essai
+.data
+str0: .asciiz "bonjour"
+
+.text
+main:
+# Initialisation de s7
+move $s7 , $sp
+#on reserve de la mémoire pour k en empliant
+addi $sp, $sp ,0
+#on reserve de la mémoire pour b en empliant
+addi $sp, $sp ,-4
+#affectation de 12 dans $v0
+#Code cible qui stock la constant 12 et la stocke dans $v0li $v0, 12
+#affectation de $v0 dans la variable compiler.Variable@28d93b30
+sw $v0, 0($s7)
+li $v0, 4 	# $v0 <- code du print
+la $a0, str0 	# $a0 <- adresse de la chaîne à écrire
+syscall 	# afficher
+#Fin du programme 
+li $v0 , 5
+syscall #retour au systeme

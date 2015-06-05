@@ -65,7 +65,8 @@ public class PlicCompiler {
 		try {
 
 			String finalCode = tree.getCompiledCode(new Compteur(0));
-			File file = new File(fileName);
+			new File("tmp").mkdir();
+			File file = new File("tmp/" + fileName);
 			file.createNewFile();
 			FileOutputStream fileFlux = new FileOutputStream(file);
 			FileWriter fw = new FileWriter(file);
