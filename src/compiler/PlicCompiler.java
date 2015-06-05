@@ -91,7 +91,7 @@ public class PlicCompiler {
 			System.exit(-1);
 		}
 		fileOut = new StringBuilder(fileIn.substring(0, fileIn.length()-4));
-		fileOut.append("ams");
+		fileOut.append("asm");
 		String code = readFile(fileIn);
 		AbstractTree tree = compile(code);
 		writeFile(tree, fileOut.toString());

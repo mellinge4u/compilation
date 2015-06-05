@@ -1,7 +1,5 @@
 classe Essai 
 	publique entier k, b; 
-	k=3; 
-	b=8; 
-	lire b;
+	k=12;
 	ecrire "bonjour";
 fin
